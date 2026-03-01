@@ -1,0 +1,25 @@
+﻿<div class="blog-page">
+  <div class="blog-page__hero">
+    <div class="container">
+      <h1>Blog &amp; News</h1>
+      <p>Latest insights, guides, and news from Stien</p>
+    </div>
+  </div>
+  <section class="section">
+    <div class="container">
+      <div class="blog-grid">
+        @for (post of posts; track post.title) {
+          <article class="blog-card card">
+            <div class="blog-card__meta">
+              <span class="blog-card__category">{{ post.category }}</span>
+              <span class="blog-card__date">{{ post.date }}</span>
+            </div>
+            <h3>{{ post.title }}</h3>
+            <p>{{ post.excerpt }}</p>
+            <a href="#" class="btn btn-outline btn--sm" style="margin-top: 1rem;">Read More</a>
+          </article>
+        }
+      </div>
+    </div>
+  </section>
+</div>

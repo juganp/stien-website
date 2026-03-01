@@ -1,0 +1,30 @@
+﻿<div class="service-page">
+  <div class="service-page__hero">
+    <div class="container">
+      <h1>Our Services</h1>
+      <p>Comprehensive solutions for all your laboratory needs</p>
+    </div>
+  </div>
+  <section class="section">
+    <div class="container">
+      <div class="service-grid">
+        @for (service of services; track service.title) {
+          <div class="service-card card">
+            <div class="service-card__icon">{{ service.icon }}</div>
+            <h3>{{ service.title }}</h3>
+            <p>{{ service.description }}</p>
+          </div>
+        }
+      </div>
+    </div>
+  </section>
+  <section class="section service-cta">
+    <div class="container">
+      <div class="service-cta__content">
+        <h2>Ready to Get Started?</h2>
+        <p>Contact us today and let our team help you find the perfect solution for your laboratory needs.</p>
+        <a routerLink="/contact" class="btn btn-primary">Contact Us</a>
+      </div>
+    </div>
+  </section>
+</div>

@@ -1,0 +1,103 @@
+﻿<!-- Hero Section -->
+<section class="hero">
+  <div class="hero__bg">
+    <img src="assets/images/Home Banner BG.jpg" alt="" aria-hidden="true" class="hero__bg-img" />
+  </div>
+  <div class="hero__bg-element">
+    <img src="assets/images/Home Banner BG Element.png" alt="" aria-hidden="true" />
+  </div>
+  <div class="container hero__content">
+    <div class="hero__text">
+      <h1 class="hero__title">
+        Precision in<br>Every Glass:
+      </h1>
+      <p class="hero__subtitle">Your Trusted Partner for Laboratory and Scientific Solutions</p>
+      <div class="hero__actions">
+        <a routerLink="/products" class="btn btn-primary">Explore Our Products</a>
+        <a routerLink="/contact" class="btn btn-outline btn-outline--hero">Contact Us</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- About Snippet -->
+<section class="section about-snippet">
+  <div class="container">
+    <div class="about-snippet__grid">
+      <div class="about-snippet__image">
+        <img src="assets/images/About Bowl.png" alt="Laboratory Glassware" />
+      </div>
+      <div class="about-snippet__content">
+        <h2>About Stien Glassware and Equipments</h2>
+        <p>Founded in 2000, Stien Glassware and Equipments has become a trusted manufacturer and supplier of high-quality laboratory glassware and scientific equipment.</p>
+        <a routerLink="/about" class="btn btn-primary" style="margin-top: 1.5rem;">Learn More</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Featured Products -->
+<section class="section featured-products">
+  <div class="featured-products__bg">
+    <img src="assets/images/Features BG.png" alt="" aria-hidden="true" />
+  </div>
+  <div class="container">
+    <div class="section-header">
+      <h2>Our Featured Products</h2>
+    </div>
+    <div class="featured-products__grid">
+      @for (product of staticFeaturedProducts; track product.name) {
+        <div class="product-card">
+          <div class="product-card__icon">
+            <img [src]="'assets/images/' + product.icon" [alt]="product.name" />
+          </div>
+          <h3>{{ product.name }}</h3>
+          <p>{{ product.description }}</p>
+        </div>
+      }
+    </div>
+    <div class="featured-products__cta">
+      <a routerLink="/products" class="btn btn-primary">View All Products</a>
+    </div>
+  </div>
+</section>
+
+<!-- Testimonials -->
+<section class="section testimonials">
+  <div class="container">
+    <div class="section-header">
+      <h2>Trusted by Leading Institutions</h2>
+      <p>Our glassware and scientific equipment are used by top universities, research facilities, and industries. Here's what our clients have to say about Stien's products</p>
+    </div>
+    <div class="testimonials__grid">
+      @for (t of testimonials; track t.name) {
+        <div class="testimonial-card card">
+          <div class="testimonial-card__header">
+            <img [src]="'assets/images/' + t.avatar" [alt]="t.name" class="testimonial-card__avatar" />
+            <div>
+              <strong>{{ t.name }}</strong>
+              <span>{{ t.role }}</span>
+            </div>
+          </div>
+          <p>{{ t.text }}</p>
+        </div>
+      }
+    </div>
+  </div>
+</section>
+
+<!-- Quality Section -->
+<section class="section quality">
+  <div class="container">
+    <div class="quality__grid">
+      <div class="quality__image">
+        <img src="assets/images/Commitment to Quality.png" alt="Commitment to Quality" />
+      </div>
+      <div class="quality__content">
+        <h2>Commitment to Quality</h2>
+        <p>At Stien, we pride ourselves on delivering products that meet international standards for safety and precision. Our glassware is made from 3.3 low-expansion borosilicate glass, ensuring exceptional durability, resistance to heat, and chemical stability. Every product is manufactured to adhere to ES-250B and globally recognized guidelines, making us the preferred choice for laboratories and industries</p>
+        <a routerLink="/about" class="btn btn-primary" style="margin-top: 1.5rem;">Learn More About Our Quality</a>
+      </div>
+    </div>
+  </div>
+</section>

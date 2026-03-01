@@ -1,0 +1,72 @@
+﻿<div class="about-page">
+  <div class="about-page__hero">
+    <div class="container">
+      <h1>About Us</h1>
+      <p>Our story, mission, and commitment to quality</p>
+    </div>
+  </div>
+  <section class="section about-story">
+    <div class="container">
+      <div class="about-story__grid">
+        <div class="about-story__image">
+          <img src="assets/images/About BG.png" alt="Stien Laboratory" />
+        </div>
+        <div class="about-story__content">
+          <h2>Our Story</h2>
+          <p>Founded in 2000, Stien Glassware and Equipments has become a trusted manufacturer and supplier of high-quality laboratory glassware and scientific equipment.</p>
+          <p style="margin-top: 1rem;">Our commitment to precision manufacturing and quality control has made us the preferred choice for laboratories that demand the best.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="section about-stats">
+    <div class="container">
+      <div class="about-stats__grid">
+        @for (stat of stats; track stat.label) {
+          <div class="stat-card">
+            <div class="stat-card__value">{{ stat.value }}</div>
+            <div class="stat-card__label">{{ stat.label }}</div>
+          </div>
+        }
+      </div>
+    </div>
+  </section>
+  <section class="section about-mission">
+    <div class="container">
+      <div class="about-mission__grid">
+        <div class="about-mission__card card">
+          <h3>Our Mission</h3>
+          <p>To manufacture and supply world-class laboratory glassware and scientific equipment that empowers researchers, scientists, and educators.</p>
+        </div>
+        <div class="about-mission__card card">
+          <h3>Our Vision</h3>
+          <p>To be the global leader in precision laboratory equipment, recognized for our uncompromising quality, innovative solutions, and exceptional customer service.</p>
+        </div>
+        <div class="about-mission__card card">
+          <h3>Our Values</h3>
+          <p>Precision, integrity, and innovation guide everything we do. We believe that great science starts with great tools and great craftsmanship.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="section about-quality">
+    <div class="container">
+      <div class="about-quality__grid">
+        <div>
+          <h2>Commitment to Quality</h2>
+          <p>Our glassware is manufactured from 3.3 low-expansion borosilicate glass, providing exceptional durability, resistance to heat, and chemical stability.</p>
+          <ul class="about-quality__list">
+            <li>ISO 9001:2015 Certified Manufacturing</li>
+            <li>ES-250B Standard Compliance</li>
+            <li>100% Quality Inspection</li>
+            <li>Borosilicate Glass 3.3</li>
+          </ul>
+          <a routerLink="/contact" class="btn btn-primary" style="margin-top: 2rem;">Get in Touch</a>
+        </div>
+        <div class="about-quality__image">
+          <img src="assets/images/Commitment to Quality.png" alt="Quality" />
+        </div>
+      </div>
+    </div>
+  </section>
+</div>

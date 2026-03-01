@@ -1,0 +1,106 @@
+﻿// ===== Stien Brand Design Tokens =====
+:root {
+  --color-primary: #7c5cbf;
+  --color-primary-dark: #5a3d9a;
+  --color-primary-light: #a78bda;
+  --color-accent: #c084fc;
+  --color-gradient-start: #c5b8f0;
+  --color-gradient-end: #d8f0f8;
+  --color-text-primary: #1a1a2e;
+  --color-text-secondary: #555577;
+  --color-text-light: #888899;
+  --color-text-on-dark: #ffffff;
+  --color-bg: #f8f7ff;
+  --color-bg-card: #ffffff;
+  --color-bg-section: #f0eeff;
+  --spacing-xs: 0.5rem;
+  --spacing-sm: 1rem;
+  --spacing-md: 1.5rem;
+  --spacing-lg: 2rem;
+  --spacing-xl: 3rem;
+  --spacing-xxl: 5rem;
+  --radius-sm: 8px;
+  --radius-md: 16px;
+  --radius-lg: 24px;
+  --radius-pill: 50px;
+  --shadow-card: 0 4px 20px rgba(124, 92, 191, 0.12);
+  --shadow-hover: 0 8px 32px rgba(124, 92, 191, 0.2);
+  --font-family: 'Inter', 'Segoe UI', sans-serif;
+  --font-size-sm: 0.875rem;
+  --font-size-base: 1rem;
+  --font-size-lg: 1.125rem;
+  --font-size-xl: 1.5rem;
+  --font-size-2xl: 2rem;
+  --font-size-3xl: 2.75rem;
+  --font-size-4xl: 3.5rem;
+  --navbar-height: 72px;
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: var(--font-family);
+  font-size: var(--font-size-base);
+  color: var(--color-text-primary);
+  background: var(--color-bg);
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+h1, h2, h3, h4, h5 { font-weight: 700; line-height: 1.2; color: var(--color-text-primary); }
+h1 { font-size: var(--font-size-4xl); }
+h2 { font-size: var(--font-size-3xl); }
+h3 { font-size: var(--font-size-xl); }
+a { text-decoration: none; color: inherit; }
+img { max-width: 100%; height: auto; }
+.container { max-width: 1200px; margin: 0 auto; padding: 0 var(--spacing-lg); }
+.section { padding: var(--spacing-xxl) 0; }
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.75rem 1.75rem;
+  border-radius: var(--radius-pill);
+  font-size: var(--font-size-base);
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  border: 2px solid transparent;
+  &-primary {
+    background: var(--color-primary);
+    color: #fff;
+    &:hover { background: var(--color-primary-dark); transform: translateY(-2px); box-shadow: var(--shadow-hover); }
+  }
+  &-outline {
+    background: transparent;
+    color: var(--color-primary);
+    border-color: var(--color-primary);
+    &:hover { background: var(--color-primary); color: #fff; transform: translateY(-2px); }
+  }
+  &-white {
+    background: #fff;
+    color: var(--color-primary);
+    &:hover { background: var(--color-bg-section); transform: translateY(-2px); }
+  }
+}
+.card {
+  background: var(--color-bg-card);
+  border-radius: var(--radius-md);
+  padding: var(--spacing-lg);
+  box-shadow: var(--shadow-card);
+  transition: box-shadow 0.25s, transform 0.25s;
+  &:hover { box-shadow: var(--shadow-hover); transform: translateY(-4px); }
+}
+.section-header {
+  text-align: center;
+  margin-bottom: var(--spacing-xl);
+  h2 { color: var(--color-text-primary); margin-bottom: 0.75rem; }
+  p { color: var(--color-text-secondary); font-size: var(--font-size-lg); max-width: 600px; margin: 0 auto; }
+}
+.grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: var(--spacing-xl); align-items: center; }
+.grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: var(--spacing-lg); }
+.grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--spacing-lg); }
+@media (max-width: 1024px) { .grid-4 { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 768px) {
+  :root { --font-size-4xl: 2.5rem; --font-size-3xl: 2rem; --font-size-2xl: 1.5rem; }
+  .grid-2, .grid-3, .grid-4 { grid-template-columns: 1fr; }
+  .container { padding: 0 var(--spacing-sm); }
+}

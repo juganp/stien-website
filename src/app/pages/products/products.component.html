@@ -1,0 +1,106 @@
+﻿<div class="products-page">
+  <div class="products-page__hero">
+    <div class="container">
+      <h1>Our Products</h1>
+      <p>Explore our comprehensive range of laboratory glassware and scientific equipment</p>
+    </div>
+  </div>
+
+  <div class="container products-page__content">
+    <!-- Category Filter -->
+    <div class="category-filter">
+      <button class="category-filter__btn" [class.active]="!selectedCategoryId()" (click)="selectCategory(undefined)">All</button>
+      @for (cat of categories(); track cat.id) {
+        <button class="category-filter__btn" [class.active]="selectedCategoryId() === cat.id"
+                (click)="selectCategory(cat.id)">{{ cat.name }}</button>
+      }
+    </div>
+
+    @if (loading()) {
+      <div class="products-page__loading">
+        <div class="spinner"></div>
+        <p>Loading products...</p>
+      </div>
+    } @else {
+      <div class="products-grid">
+        @for (product of filteredProducts(); track product.id) {
+          <div class="product-tile card">
+            <div class="product-tile__image">
+              <img [src]="'assets/images/' + getProductIcon(product.name)" [alt]="product.name" />
+            </div>
+            <div class="product-tile__body">
+              <span class="product-tile__category">{{ product.categoryName }}</span>
+              <h3>{{ product.name }}</h3>
+              @if (product.description) {
+                <p>{{ product.description }}</p>
+              }
+            </div>
+            <div class="product-tile__footer">
+              <button class="btn btn-primary btn--sm" (click)="addToCart(product)">Request Quote</button>
+            </div>
+          </div>
+        }
+
+        @if (filteredProducts().length === 0 && !loading()) {
+          <div class="products-page__empty">
+            <p>No products found. Please check back later.</p>
+          </div>
+        }
+      </div>
+    }
+
+    @if (cartCount() > 0 && !showEnquiryForm()) {
+      <div class="cart-bar">
+        <span>{{ cartCount() }} item(s) in your quote request</span>
+        <button class="btn btn-primary" (click)="showEnquiryForm.set(true)">Send Enquiry</button>
+      </div>
+    }
+
+    @if (showEnquiryForm()) {
+      <div class="enquiry-overlay">
+        <div class="enquiry-form card">
+          <h3>Request a Quote</h3>
+          <div class="enquiry-form__items">
+            @for (item of cart(); track item.productName) {
+              <span class="tag">{{ item.productName }} &times; {{ item.quantity }}</span>
+            }
+          </div>
+          <div class="form-group">
+            <label>Name *</label>
+            <input type="text" [(ngModel)]="enquiryForm.customerName" placeholder="Your full name" />
+          </div>
+          <div class="form-group">
+            <label>Email *</label>
+            <input type="email" [(ngModel)]="enquiryForm.customerEmail" placeholder="your@email.com" />
+          </div>
+          <div class="form-group">
+            <label>Company</label>
+            <input type="text" [(ngModel)]="enquiryForm.companyName" placeholder="Company name (optional)" />
+          </div>
+          <div class="form-group">
+            <label>Phone</label>
+            <input type="tel" [(ngModel)]="enquiryForm.phone" placeholder="+1234567890 (optional)" />
+          </div>
+          <div class="form-group">
+            <label>Message *</label>
+            <textarea [(ngModel)]="enquiryForm.message" placeholder="Any specific requirements..." rows="4"></textarea>
+          </div>
+          @if (enquiryError()) {
+            <p class="enquiry-form__error">{{ enquiryError() }}</p>
+          }
+          <div class="enquiry-form__actions">
+            <button class="btn btn-outline" (click)="showEnquiryForm.set(false)">Cancel</button>
+            <button class="btn btn-primary" (click)="submitEnquiry()">Submit Enquiry</button>
+          </div>
+        </div>
+      </div>
+    }
+
+    @if (enquirySuccess()) {
+      <div class="enquiry-success">
+        <h3>Enquiry Submitted!</h3>
+        <p>Thank you for your interest. We'll get back to you within 24 hours.</p>
+      </div>
+    }
+  </div>
+</div>
