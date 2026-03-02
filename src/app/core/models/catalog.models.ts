@@ -1,6 +1,7 @@
-﻿export interface Category {
+export interface Category {
   id: string;
   name: string;
+  productCount: number;
 }
 
 export interface Product {
@@ -11,6 +12,15 @@ export interface Product {
   categoryId: string;
   categoryName: string;
   uomName: string;
-  sellingPrice: number;
-  taxRatePercent: number;
+  isFeatured: boolean;
+  sellingPrice: number | null;
+  taxRatePercent: number | null;
+}
+
+export interface PagedProductResult {
+  items: Product[];
+  totalCount: number;
+  page: number;
+  pageSize: number;
+  totalPages: number;
 }

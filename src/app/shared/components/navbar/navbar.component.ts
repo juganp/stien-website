@@ -1,6 +1,7 @@
-﻿import { Component, signal, HostListener } from '@angular/core';
+import { Component, signal, HostListener, inject } from '@angular/core';
 import { RouterLink, RouterLinkActive } from '@angular/router';
 import { CommonModule } from '@angular/common';
+import { ThemeService } from '../../../core/services/theme.service';
 
 @Component({
   selector: 'app-navbar',
@@ -10,6 +11,7 @@ import { CommonModule } from '@angular/common';
   styleUrl: './navbar.component.scss'
 })
 export class NavbarComponent {
+  readonly themeService = inject(ThemeService);
   readonly isScrolled = signal(false);
   readonly menuOpen = signal(false);
 

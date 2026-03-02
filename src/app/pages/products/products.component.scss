@@ -46,3 +46,18 @@
 @keyframes spin { to { transform: rotate(360deg); } }
 
 .enquiry-success { text-align: center; background: #f0fff4; border: 1.5px solid #68d391; border-radius: var(--radius-md); padding: 2rem; margin-top: 2rem; h3 { color: #276749; margin-bottom: 0.5rem; } p { color: #2f855a; } }
+
+.products-toolbar { display: flex; gap: 1rem; align-items: center; margin-bottom: 1rem; flex-wrap: wrap; &__search { flex: 1; min-width: 200px; } &__sort { min-width: 180px; } }
+
+.search-input { width: 100%; padding: 0.6rem 1rem; border: 1.5px solid #ddd; border-radius: var(--radius-pill); font-size: 0.9rem; transition: border-color 0.2s; &:focus { outline: none; border-color: var(--color-primary); } }
+
+.sort-select { width: 100%; padding: 0.6rem 1rem; border: 1.5px solid #ddd; border-radius: var(--radius-pill); font-size: 0.9rem; background: #fff; cursor: pointer; &:focus { outline: none; border-color: var(--color-primary); } }
+
+.results-summary { font-size: 0.875rem; color: var(--color-text-secondary); margin-bottom: 1rem; }
+
+.product-tile {
+  &__image-link { display: block; text-decoration: none; }
+  &__body { h3 a { color: inherit; text-decoration: none; &:hover { color: var(--color-primary); } } }
+}
+
+.pagination { display: flex; justify-content: center; gap: 0.5rem; margin-top: 2.5rem; flex-wrap: wrap; &__btn { padding: 0.5rem 0.875rem; border: 1.5px solid #ddd; border-radius: var(--radius-sm); background: #fff; cursor: pointer; font-size: 0.875rem; transition: all 0.2s; &:hover:not(:disabled) { border-color: var(--color-primary); color: var(--color-primary); } &.active { background: var(--color-primary); color: #fff; border-color: var(--color-primary); } &:disabled { opacity: 0.4; cursor: not-allowed; } } }

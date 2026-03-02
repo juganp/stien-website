@@ -1,4 +1,4 @@
-﻿<nav class="navbar" [class.scrolled]="isScrolled()">
+<nav class="navbar" [class.scrolled]="isScrolled()">
   <div class="navbar__container">
     <a routerLink="/" class="navbar__brand">
       <img src="assets/images/Stien Logo.png" alt="Stien" class="navbar__logo" />
@@ -29,6 +29,18 @@
           <img src="assets/images/Social Icon - 4.png" alt="YouTube" />
         </a>
       </div>
+
+      <!-- Dark/Light theme toggle -->
+      <button class="navbar__theme-toggle" (click)="themeService.toggle()"
+              [attr.aria-label]="themeService.isDark() ? 'Switch to light mode' : 'Switch to dark mode'"
+              [title]="themeService.isDark() ? 'Light mode' : 'Dark mode'">
+        @if (themeService.isDark()) {
+          <span class="theme-icon">☀️</span>
+        } @else {
+          <span class="theme-icon">🌙</span>
+        }
+      </button>
+
       <button class="navbar__hamburger" (click)="toggleMenu()" aria-label="Toggle menu">
         <span></span><span></span><span></span>
       </button>

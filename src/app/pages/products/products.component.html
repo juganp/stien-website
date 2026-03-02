@@ -1,4 +1,4 @@
-﻿<div class="products-page">
+<div class="products-page">
   <div class="products-page__hero">
     <div class="container">
       <h1>Our Products</h1>
@@ -16,6 +16,26 @@
       }
     </div>
 
+    <!-- Search & Sort Toolbar -->
+    <div class="products-toolbar">
+      <div class="products-toolbar__search">
+        <input type="search" placeholder="Search products..." class="search-input"
+               (input)="onSearchInput($any($event.target).value)" />
+      </div>
+      <div class="products-toolbar__sort">
+        <select class="sort-select" (change)="onSortChange($any($event.target).value)">
+          @for (opt of sortOptions; track opt.value) {
+            <option [value]="opt.value" [selected]="currentSort() === opt.value">{{ opt.label }}</option>
+          }
+        </select>
+      </div>
+    </div>
+
+    <!-- Results Summary -->
+    @if (!loading() && totalCount() > 0) {
+      <p class="results-summary">Showing {{ showingFrom() }}–{{ showingTo() }} of {{ totalCount() }} products</p>
+    }
+
     @if (loading()) {
       <div class="products-page__loading">
         <div class="spinner"></div>
@@ -23,14 +43,18 @@
       </div>
     } @else {
       <div class="products-grid">
-        @for (product of filteredProducts(); track product.id) {
+        @for (product of products(); track product.id) {
           <div class="product-tile card">
-            <div class="product-tile__image">
-              <img [src]="'assets/images/' + getProductIcon(product.name)" [alt]="product.name" />
-            </div>
+            <a [routerLink]="['/products', product.code]" class="product-tile__image-link">
+              <div class="product-tile__image">
+                <img [src]="'assets/images/' + getProductIcon(product.name)" [alt]="product.name" />
+              </div>
+            </a>
             <div class="product-tile__body">
               <span class="product-tile__category">{{ product.categoryName }}</span>
-              <h3>{{ product.name }}</h3>
+              <h3>
+                <a [routerLink]="['/products', product.code]">{{ product.name }}</a>
+              </h3>
               @if (product.description) {
                 <p>{{ product.description }}</p>
               }
@@ -41,12 +65,24 @@
           </div>
         }
 
-        @if (filteredProducts().length === 0 && !loading()) {
+        @if (products().length === 0 && !loading()) {
           <div class="products-page__empty">
-            <p>No products found. Please check back later.</p>
+            <p>No products found. Try a different search or category.</p>
           </div>
         }
       </div>
+
+      <!-- Pagination -->
+      @if (totalPages() > 1) {
+        <div class="pagination">
+          <button class="pagination__btn" [disabled]="currentPage() === 1" (click)="goToPage(currentPage() - 1)">&#8249;</button>
+          @for (page of [].constructor(totalPages()); track $index) {
+            <button class="pagination__btn" [class.active]="currentPage() === $index + 1"
+                    (click)="goToPage($index + 1)">{{ $index + 1 }}</button>
+          }
+          <button class="pagination__btn" [disabled]="currentPage() === totalPages()" (click)="goToPage(currentPage() + 1)">&#8250;</button>
+        </div>
+      }
     }
 
     @if (cartCount() > 0 && !showEnquiryForm()) {

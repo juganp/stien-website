@@ -1,4 +1,4 @@
-﻿.navbar {
+.navbar {
   position: fixed;
   top: 0;
   left: 0;
@@ -48,6 +48,27 @@
     a { transition: opacity 0.2s; &:hover { opacity: 0.75; } }
   }
 
+  &__theme-toggle {
+    background: none;
+    border: 1.5px solid rgba(124, 92, 191, 0.3);
+    border-radius: var(--radius-pill);
+    cursor: pointer;
+    padding: 0.3rem 0.6rem;
+    display: flex;
+    align-items: center;
+    transition: background 0.2s, border-color 0.2s;
+
+    &:hover {
+      background: rgba(124, 92, 191, 0.1);
+      border-color: var(--color-primary);
+    }
+
+    .theme-icon {
+      font-size: 1.1rem;
+      line-height: 1;
+    }
+  }
+
   &__hamburger {
     display: none;
     flex-direction: column;
@@ -62,6 +83,7 @@
   @media (max-width: 768px) {
     &__hamburger { display: flex; }
     &__social { display: none; }
+    &__theme-toggle { display: flex; } // ensure it's visible on mobile
     &__links {
       display: none;
       position: fixed;

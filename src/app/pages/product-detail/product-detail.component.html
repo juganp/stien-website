@@ -1,0 +1,73 @@
+<div class="product-detail-page">
+  @if (loading()) {
+    <div class="product-detail-page__loading">
+      <div class="spinner"></div>
+      <p>Loading product...</p>
+    </div>
+  } @else if (notFound()) {
+    <div class="container product-detail-page__notfound">
+      <h2>Product Not Found</h2>
+      <p>The product you're looking for doesn't exist or is no longer available.</p>
+      <a routerLink="/products" class="btn btn-primary">Browse All Products</a>
+    </div>
+  } @else if (product()) {
+    <!-- Breadcrumb -->
+    <div class="breadcrumb-bar">
+      <div class="container">
+        <nav class="breadcrumb">
+          <a routerLink="/">Home</a>
+          <span class="breadcrumb__sep">›</span>
+          <a routerLink="/products">Products</a>
+          <span class="breadcrumb__sep">›</span>
+          <span>{{ product()!.name }}</span>
+        </nav>
+      </div>
+    </div>
+
+    <div class="container product-detail-page__content">
+      <div class="product-detail">
+        <!-- Image -->
+        <div class="product-detail__image-wrap">
+          <img src="assets/images/3 - Conical Flasks.png" [alt]="product()!.name" class="product-detail__image" />
+        </div>
+
+        <!-- Info -->
+        <div class="product-detail__info">
+          <span class="product-detail__category">{{ product()!.categoryName }}</span>
+          <h1 class="product-detail__name">{{ product()!.name }}</h1>
+          <p class="product-detail__code">Code: <strong>{{ product()!.code }}</strong></p>
+
+          @if (product()!.description) {
+            <p class="product-detail__description">{{ product()!.description }}</p>
+          }
+
+          <table class="product-detail__specs">
+            <tbody>
+              <tr>
+                <th>Category</th>
+                <td>{{ product()!.categoryName }}</td>
+              </tr>
+              <tr>
+                <th>Unit of Measure</th>
+                <td>{{ product()!.uomName }}</td>
+              </tr>
+              @if (product()!.sellingPrice != null) {
+                <tr>
+                  <th>Price</th>
+                  <td>₹{{ product()!.sellingPrice!.toFixed(2) }}</td>
+                </tr>
+              }
+            </tbody>
+          </table>
+
+          <div class="product-detail__actions">
+            <a [routerLink]="['/contact']" [queryParams]="{ product: product()!.code }" class="btn btn-primary">
+              Request a Quote
+            </a>
+            <a routerLink="/products" class="btn btn-outline">Back to Products</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  }
+</div>

@@ -64,6 +64,7 @@
   &__icon { width: 80px; height: 80px; margin: 0 auto 1rem; background: linear-gradient(135deg, #f0ecff, #e8f4ff); border-radius: 50%; display: flex; align-items: center; justify-content: center; img { width: 52px; height: 52px; object-fit: contain; } }
   h3 { font-size: 1.05rem; color: var(--color-primary); margin-bottom: 0.5rem; }
   p { font-size: 0.875rem; color: var(--color-text-secondary); line-height: 1.5; }
+  &--link { display: block; text-decoration: none; color: inherit; cursor: pointer; }
 }
 
 .testimonials {

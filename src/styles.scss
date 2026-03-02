@@ -104,3 +104,44 @@ img { max-width: 100%; height: auto; }
   .grid-2, .grid-3, .grid-4 { grid-template-columns: 1fr; }
   .container { padding: 0 var(--spacing-sm); }
 }
+// ===== Dark Theme =====
+:root.dark {
+  --color-primary: #a78bda;
+  --color-primary-dark: #7c5cbf;
+  --color-primary-light: #c5aaee;
+  --color-accent: #d8a4fc;
+  --color-gradient-start: #2d1b69;
+  --color-gradient-end: #1a3a5c;
+
+  --color-text-primary: #f0eeff;
+  --color-text-secondary: #c8bcee;
+  --color-text-light: #9880cc;
+  --color-text-on-dark: #ffffff;
+
+  --color-bg: #0d0b2b;
+  --color-bg-card: #1a1748;
+  --color-bg-section: #160f3a;
+
+  --shadow-card: 0 4px 20px rgba(0, 0, 0, 0.5);
+  --shadow-hover: 0 8px 32px rgba(167, 139, 218, 0.3);
+}
+
+:root.dark body {
+  background: var(--color-bg);
+  color: var(--color-text-primary);
+}
+
+:root.dark .card {
+  background: var(--color-bg-card);
+  border: 1px solid rgba(167, 139, 218, 0.15);
+}
+
+:root.dark .navbar {
+  background: rgba(13, 11, 43, 0.92);
+  border-bottom-color: rgba(167, 139, 218, 0.2);
+}
+
+:root.dark h1, :root.dark h2, :root.dark h3,
+:root.dark h4, :root.dark h5 {
+  color: var(--color-text-primary);
+}

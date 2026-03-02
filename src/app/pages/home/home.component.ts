@@ -1,4 +1,4 @@
-﻿import { Component, signal, inject, OnInit } from '@angular/core';
+import { Component, signal, inject, OnInit } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { CatalogService } from '../../core/services/catalog.service';
 import { Product } from '../../core/models/catalog.models';
@@ -13,6 +13,7 @@ import { Product } from '../../core/models/catalog.models';
 export class HomeComponent implements OnInit {
   private readonly catalogService = inject(CatalogService);
 
+  readonly useFallback = signal(true);
   readonly featuredProducts = signal<Product[]>([]);
 
   readonly testimonials = [
@@ -22,16 +23,19 @@ export class HomeComponent implements OnInit {
   ];
 
   readonly staticFeaturedProducts = [
-    { name: 'Air Condensers', description: 'High-quality condensers for lab and industrial use', icon: '1 - Air Condensers.png' },
-    { name: 'Centrifuge Tubes', description: 'Precision-crafted tubes for research and chemical analysis', icon: '2 - Centrifuge Tubes.png' },
-    { name: 'Conical Flasks', description: 'Durable, low-expansion borosilicate glass flasks for lab applications', icon: '3 - Conical Flasks.png' },
-    { name: 'Graduated Cylinders', description: 'Precision-crafted tubes for research and chemical analysis', icon: '4 - Graduated Cylinders.png' },
+    { name: 'Air Condensers', description: 'High-quality condensers for lab and industrial use', icon: '1 - Air Condensers.png', code: 'air-condensers' },
+    { name: 'Centrifuge Tubes', description: 'Precision-crafted tubes for research and chemical analysis', icon: '2 - Centrifuge Tubes.png', code: 'centrifuge-tubes' },
+    { name: 'Conical Flasks', description: 'Durable, low-expansion borosilicate glass flasks for lab applications', icon: '3 - Conical Flasks.png', code: 'conical-flasks' },
+    { name: 'Graduated Cylinders', description: 'Precision-crafted measuring instruments for accurate volume measurement', icon: '4 - Graduated Cylinders.png', code: 'graduated-cylinders' },
   ];
 
   ngOnInit() {
-    this.catalogService.getProducts().subscribe({
-      next: (products) => this.featuredProducts.set(products.slice(0, 4)),
-      error: () => { this.featuredProducts.set([]); }
+    this.catalogService.getFeaturedProducts().subscribe({
+      next: (products) => {
+        this.featuredProducts.set(products.slice(0, 4));
+        this.useFallback.set(false);
+      },
+      error: () => { /* keep useFallback = true, show static list */ }
     });
   }
 }

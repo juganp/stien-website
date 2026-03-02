@@ -46,14 +46,26 @@
       <h2>Our Featured Products</h2>
     </div>
     <div class="featured-products__grid">
-      @for (product of staticFeaturedProducts; track product.name) {
-        <div class="product-card">
-          <div class="product-card__icon">
-            <img [src]="'assets/images/' + product.icon" [alt]="product.name" />
-          </div>
-          <h3>{{ product.name }}</h3>
-          <p>{{ product.description }}</p>
-        </div>
+      @if (useFallback()) {
+        @for (product of staticFeaturedProducts; track product.name) {
+          <a [routerLink]="['/products', product.code]" class="product-card product-card--link">
+            <div class="product-card__icon">
+              <img [src]="'assets/images/' + product.icon" [alt]="product.name" />
+            </div>
+            <h3>{{ product.name }}</h3>
+            <p>{{ product.description }}</p>
+          </a>
+        }
+      } @else {
+        @for (product of featuredProducts(); track product.id) {
+          <a [routerLink]="['/products', product.code]" class="product-card product-card--link">
+            <div class="product-card__icon">
+              <img src="assets/images/3 - Conical Flasks.png" [alt]="product.name" />
+            </div>
+            <h3>{{ product.name }}</h3>
+            <p>{{ product.description }}</p>
+          </a>
+        }
       }
     </div>
     <div class="featured-products__cta">
