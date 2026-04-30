@@ -1,0 +1,79 @@
+<div class="quality section-padding">
+  <div class="quality__backdrop" aria-hidden="true"></div>
+
+  <div class="section-container">
+
+    <header class="quality__header">
+      <div class="section-badge">
+        <svg width="8" height="8" viewBox="0 0 8 8" aria-hidden="true"><circle cx="4" cy="4" r="4" fill="currentColor"/></svg>
+        Quality &amp; Standards
+      </div>
+      <div class="arc-divider"></div>
+      <h2 class="text-h2 quality__title">
+        Rigorous Internal<br>
+        <em class="quality__title-em">Quality Control</em>
+      </h2>
+      <p class="text-body-lg quality__subtitle">
+        Adhering to rigorous internal quality control benchmarks — every
+        specification driven by measurable, internationally-referenced criteria.
+        Not claims. Criteria.
+      </p>
+    </header>
+
+    <!-- Pillars grid -->
+    <div class="quality__grid" role="list">
+      @for (pillar of pillars; track pillar.title; let i = $index) {
+        <div class="quality__card glass-card glow-border" role="listitem" [style.animation-delay]="(i * 0.08) + 's'">
+          <div class="quality__card-top">
+            <div class="quality__icon-wrap" aria-hidden="true">
+              @switch (pillar.icon) {
+                @case ('material') {
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+                }
+                @case ('tolerance') {
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
+                }
+                @case ('thermal') {
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 14.76V3.5a2.5 2.5 0 0 0-5 0v11.26a4.5 4.5 0 1 0 5 0z"/></svg>
+                }
+                @case ('batch') {
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+                }
+                @case ('chemical') {
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M10 2v7.31l-3.21 4.81A4 4 0 0 0 10 21h4a4 4 0 0 0 3.21-6.88L14 9.31V2"/><line x1="8.5" y1="2" x2="15.5" y2="2"/></svg>
+                }
+                @case ('marking') {
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/></svg>
+                }
+              }
+            </div>
+            <span class="quality__spec text-spec">{{ pillar.spec }}</span>
+          </div>
+
+          <h3 class="quality__pillar-title">{{ pillar.title }}</h3>
+          <p class="quality__pillar-body">{{ pillar.body }}</p>
+        </div>
+      }
+    </div>
+
+    <!-- Bottom statement -->
+    <div class="quality__statement glass-elevated">
+      <div class="quality__statement-inner">
+        <p class="quality__statement-text">
+          "Committed to global standardization — manufactured to international dimensional
+          tolerances with traceable batch-level quality validation protocols."
+        </p>
+        <div class="quality__statement-marks">
+          <span class="text-spec">ASTM E438</span>
+          <span class="quality__sep" aria-hidden="true">·</span>
+          <span class="text-spec">DIN 12331</span>
+          <span class="quality__sep" aria-hidden="true">·</span>
+          <span class="text-spec">HGB1</span>
+          <span class="quality__sep" aria-hidden="true">·</span>
+          <span class="text-spec">Class A</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>

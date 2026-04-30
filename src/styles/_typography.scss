@@ -1,0 +1,94 @@
+@use 'variables' as *;
+
+.font-display { font-family: $font-display; }
+.font-body    { font-family: $font-body; }
+.font-mono    { font-family: $font-mono; }
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: $font-display;
+  letter-spacing: -0.025em;
+  line-height: 1.1;
+  color: var(--color-text-primary);
+}
+
+body {
+  font-family: $font-body;
+  font-size: $fs-body;
+  line-height: 1.7;
+  color: var(--color-text-primary);
+  background-color: var(--color-base);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.text-display-xl {
+  font-family: $font-display;
+  font-size: clamp(56px, 7vw, $fs-display-xl);
+  font-weight: 700;
+  font-style: italic;
+  letter-spacing: -0.03em;
+  line-height: 1.0;
+}
+
+.text-display {
+  font-family: $font-display;
+  font-size: clamp(48px, 6vw, $fs-display);
+  font-weight: 700;
+  letter-spacing: -0.025em;
+  line-height: 1.05;
+}
+
+.text-h1 {
+  font-family: $font-display;
+  font-size: clamp(40px, 5vw, $fs-h1);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+.text-h2 {
+  font-family: $font-display;
+  font-size: clamp(32px, 4vw, $fs-h2);
+  font-weight: 600;
+  letter-spacing: -0.02em;
+}
+
+.text-h3 {
+  font-family: $font-display;
+  font-size: clamp(22px, 2.5vw, $fs-h3);
+  font-weight: 600;
+  letter-spacing: -0.015em;
+}
+
+.text-h4 {
+  font-family: $font-body;
+  font-size: $fs-h4;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+}
+
+.text-body-lg { font-size: $fs-body-lg; line-height: 1.7; font-weight: 300; }
+.text-body    { font-size: $fs-body;    line-height: 1.7; }
+.text-body-sm { font-size: $fs-body-sm; line-height: 1.6; }
+.text-caption { font-size: $fs-caption; line-height: 1.5; color: var(--color-text-tertiary); }
+
+.text-spec {
+  font-family: $font-mono;
+  font-size: $fs-spec;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  color: var(--color-accent-secondary);
+}
+
+.text-label {
+  font-family: $font-body;
+  font-size: $fs-caption;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-accent-primary);
+}
+
+.text-accent-primary   { color: var(--color-accent-primary); }
+.text-accent-secondary { color: var(--color-accent-secondary); }
+.text-secondary        { color: var(--color-text-secondary); }
+.text-tertiary         { color: var(--color-text-tertiary); }

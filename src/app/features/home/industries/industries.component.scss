@@ -1,0 +1,205 @@
+@use 'variables' as *;
+
+.ind {
+  position: relative;
+  background: var(--color-base-alt);
+  overflow: hidden;
+
+  &__backdrop {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background:
+      radial-gradient(ellipse 60% 50% at 0% 50%, rgba(153,213,255,0.06) 0%, transparent 60%),
+      radial-gradient(ellipse 40% 40% at 100% 0%, rgba(200,151,255,0.07) 0%, transparent 50%);
+  }
+
+  &__header {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+    max-width: 560px;
+    margin-bottom: 48px;
+  }
+
+  &__title { color: var(--color-text-primary); }
+  &__title-em { font-style: italic; color: var(--color-accent-primary); }
+
+  &__tabs-scroll-wrap {
+    position: relative;
+    margin-bottom: 24px;
+
+    // Fade-out edges on mobile to hint at scroll
+    @media (max-width: $bp-sm) {
+      &::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 40px;
+        height: 100%;
+        background: linear-gradient(to right, transparent, var(--color-base-alt));
+        pointer-events: none;
+        z-index: 1;
+        border-radius: 0 $radius-xl $radius-xl 0;
+      }
+    }
+  }
+
+  &__tabs {
+    display: flex;
+    gap: 4px;
+    padding: 4px;
+    background: var(--color-surface-1);
+    border: 1px solid var(--color-border);
+    border-radius: $radius-xl;
+    width: fit-content;
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+
+    // Scrollable on mobile
+    @media (max-width: $bp-sm) {
+      width: 100%;
+      overflow-x: auto;
+      scroll-snap-type: x proximity;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: none;
+
+      &::-webkit-scrollbar { display: none; }
+    }
+  }
+
+  &__tab {
+    padding: 10px 24px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--color-text-tertiary);
+    background: transparent;
+    border: none;
+    border-radius: calc($radius-xl - 4px);
+    cursor: pointer;
+    white-space: nowrap;
+    flex-shrink: 0;
+    scroll-snap-align: start;
+    transition: color $duration-fast $ease-smooth,
+                background $duration-fast $ease-smooth;
+
+    &:hover {
+      color: var(--color-text-primary);
+      background: var(--color-hover);
+    }
+
+    &--active {
+      color: var(--color-text-primary);
+      background: var(--color-surface-3);
+      box-shadow: 0 2px 8px var(--color-shadow);
+    }
+
+    &:focus-visible {
+      outline: 2px solid var(--color-accent-primary);
+      outline-offset: 2px;
+    }
+  }
+
+  &__panel {
+    padding: 40px;
+    animation: fade-up 0.35s $ease-smooth both;
+
+    @media (max-width: 639px) { padding: 24px; }
+  }
+
+  &__panel-layout {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 48px;
+
+    @media (min-width: 768px) {
+      grid-template-columns: 1fr 1fr;
+      gap: 56px;
+    }
+  }
+
+  &__panel-copy {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  &__panel-headline {
+    font-family: 'Fraunces', Georgia, serif;
+    font-size: clamp(22px, 2.8vw, 30px);
+    font-weight: 600;
+    letter-spacing: -0.02em;
+    color: var(--color-text-primary);
+    line-height: 1.2;
+  }
+
+  &__panel-body {
+    font-size: 15px;
+    color: var(--color-text-secondary);
+    line-height: 1.75;
+    margin: 0;
+  }
+
+  &__spec-badge {
+    padding: 10px 16px;
+    background: var(--color-hover);
+    border: 1px solid var(--color-border-strong);
+    border-radius: $radius-md;
+    width: fit-content;
+  }
+
+  &__spec-text {
+    font-size: 12px;
+  }
+
+  &__cta {
+    width: fit-content;
+    font-size: 14px;
+    padding: 12px 28px;
+  }
+
+  &__products {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  &__products-title {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.10em;
+    text-transform: uppercase;
+    color: var(--color-accent-primary);
+    margin-bottom: 4px;
+  }
+
+  &__product-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+
+  &__product-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 0;
+    border-bottom: 1px solid var(--color-border);
+    font-size: 14px;
+    color: var(--color-text-secondary);
+    transition: color $duration-fast $ease-smooth;
+
+    &:last-child { border-bottom: none; }
+    &:hover { color: var(--color-text-primary); }
+
+    svg { color: var(--color-accent-secondary); flex-shrink: 0; }
+  }
+}

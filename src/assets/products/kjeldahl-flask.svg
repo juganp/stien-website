@@ -1,0 +1,20 @@
+<svg viewBox="0 0 64 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Very long narrow neck (distinguishes it from volumetric flask — neck is ~half total height) -->
+  <rect x="27" y="2" width="10" height="36" rx="2"
+        fill="rgba(200,151,255,0.12)" stroke="rgba(200,151,255,0.5)" stroke-width="1.5"/>
+  <!-- Neck inner highlight -->
+  <rect x="29" y="4" width="3" height="32" rx="1.5" fill="rgba(255,255,255,0.07)"/>
+  <!-- Elongated pear body — taller and narrower than a round bulb, tapers more at top -->
+  <path d="M27 38 C24 43 15 50 14 62 C13 72 18 79 32 79 C46 79 51 72 50 62 C49 50 40 43 37 38 Z"
+        fill="rgba(200,151,255,0.08)" stroke="rgba(200,151,255,0.45)" stroke-width="1.5"/>
+  <!-- Liquid fill — concentrated acid reagent (slightly higher fill than volumetric) -->
+  <path d="M15 64 C15 74 19 79 32 79 C45 79 49 74 49 64 Z"
+        fill="rgba(153,213,255,0.18)"/>
+  <!-- Liquid surface -->
+  <ellipse cx="32" cy="64" rx="17" ry="3.5" fill="rgba(153,213,255,0.30)"/>
+  <!-- Glass highlight on elongated body -->
+  <path d="M19 52 Q17 64 18 72" stroke="rgba(255,255,255,0.15)" stroke-width="2" stroke-linecap="round"/>
+  <!-- Small bubble detail (acid digestion context) -->
+  <circle cx="38" cy="70" r="1.5" fill="rgba(255,255,255,0.08)"/>
+  <circle cx="26" cy="73" r="1" fill="rgba(255,255,255,0.06)"/>
+</svg>

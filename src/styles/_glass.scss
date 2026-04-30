@@ -1,0 +1,149 @@
+@use 'variables' as *;
+
+// ─── Glassmorphism System ─────────────────────────────────────────────────────
+
+.glass {
+  background: var(--color-surface-1);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid var(--color-border);
+  border-radius: $radius-lg;
+}
+
+.glass-elevated {
+  background: var(--color-surface-2);
+  backdrop-filter: blur(28px);
+  -webkit-backdrop-filter: blur(28px);
+  border: 1px solid var(--color-border-strong);
+  border-radius: $radius-xl;
+  box-shadow:
+    0 8px 32px var(--color-shadow),
+    inset 0 1px 0 rgba(255,255,255,0.14);
+}
+
+.glass-floating {
+  background: var(--color-surface-3);
+  backdrop-filter: blur(40px);
+  -webkit-backdrop-filter: blur(40px);
+  border: 1px solid var(--color-border-strong);
+  border-radius: $radius-2xl;
+  box-shadow:
+    0 20px 60px var(--color-shadow-strong),
+    0 4px 16px var(--color-shadow),
+    inset 0 1px 0 rgba(255,255,255,0.20);
+}
+
+.glass-card {
+  @extend .glass-elevated;
+  transition: transform $duration-normal $ease-spring,
+              box-shadow $duration-normal $ease-smooth,
+              background $duration-normal $ease-smooth,
+              border-color $duration-normal $ease-smooth;
+
+  &:hover,
+  &:focus-within {
+    transform: translateY(-6px) scale(1.015);
+    background: var(--color-card-hover-bg);
+    border-color: var(--color-border-strong);
+    box-shadow:
+      0 0 0 2px var(--color-border-strong),
+      0 0 32px 12px var(--color-glow-hover),
+      0 0 72px 24px var(--color-glow-cyan-hover),
+      0 24px 56px var(--color-shadow-strong),
+      inset 0 1px 0 rgba(255,255,255,0.32);
+  }
+
+  &:has(:active) {
+    transform: translateY(-2px) scale(0.99);
+    box-shadow:
+      0 0 0 2px var(--color-border-strong),
+      0 0 16px 6px var(--color-glow),
+      0 8px 24px var(--color-shadow),
+      inset 0 1px 0 rgba(255,255,255,0.20);
+    transition-duration: $duration-fast;
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--color-accent-primary);
+    outline-offset: 3px;
+  }
+}
+
+// .glow-border — gradient pseudo was invisible inside backdrop-filter stacking context
+// Border ring is now handled via the 0 0 0 1.5px box-shadow layer above
+.glow-border {
+  position: relative;
+}
+
+// ─── OS-level Contrast Modes ──────────────────────────────────────────────────
+
+@media (prefers-contrast: more) {
+  .glass-card {
+    border: 2px solid var(--color-text-secondary);
+    background: var(--color-surface-3);
+
+    &:hover,
+    &:focus-within {
+      border-color: var(--color-accent-primary);
+      box-shadow:
+        0 0 0 3px var(--color-accent-primary),
+        0 8px 24px var(--color-shadow-strong);
+      transform: translateY(-6px) scale(1.015);
+    }
+  }
+}
+
+@media (forced-colors: active) {
+  .glass-card {
+    border: 2px solid ButtonText;
+    background: Canvas;
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+
+    &:hover {
+      border-color: Highlight;
+      outline: 3px solid Highlight;
+      outline-offset: 2px;
+    }
+  }
+}
+
+// Arc divider — echoes logo motif
+.arc-divider {
+  width: 60px;
+  height: 3px;
+  background: linear-gradient(90deg, var(--color-accent-primary), var(--color-accent-secondary));
+  border-radius: $radius-full;
+  margin: $space-6 0;
+}
+
+// Section label badge
+.section-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: $space-2;
+  padding: $space-1 $space-4;
+  background: var(--color-hover);
+  border: 1px solid var(--color-border-strong);
+  border-radius: $radius-full;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.10em;
+  text-transform: uppercase;
+  color: var(--color-accent-primary);
+}
+
+// Grain texture overlay
+.grain-overlay {
+  &::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.035'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 1;
+    opacity: 0.4;
+  }
+}

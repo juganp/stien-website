@@ -1,0 +1,57 @@
+<div class="fp section-padding">
+  <div class="fp__backdrop" aria-hidden="true"></div>
+
+  <div class="section-container">
+
+    <!-- Section header -->
+    <header class="fp__header">
+      <div class="section-badge">
+        <svg width="8" height="8" viewBox="0 0 8 8" aria-hidden="true"><circle cx="4" cy="4" r="4" fill="currentColor"/></svg>
+        Featured Apparatus
+      </div>
+      <div class="arc-divider"></div>
+      <h2 class="text-h2 fp__title">
+        Precision Engineered<br>
+        <em class="fp__title-em">Laboratory Glassware</em>
+      </h2>
+      <p class="fp__subtitle text-body-lg">
+        Class A certified volumetric apparatus and specialty glassware manufactured
+        to ASTM E438 and DIN 12331 standards. Every batch traceable from raw material
+        to dispatch.
+      </p>
+    </header>
+
+    <!-- Product grid -->
+    <div class="fp__grid" #productsGrid role="list" aria-label="Featured products">
+      @for (product of featured; track product.id) {
+        <div role="listitem">
+          <app-product-card [product]="product" />
+        </div>
+      }
+    </div>
+
+    <!-- Standards strip -->
+    <div class="fp__standards" aria-label="Quality standards">
+      <div class="fp__std-item">
+        <span class="text-spec">ASTM E438</span>
+        <span class="fp__std-desc">Borosilicate Glass Type I</span>
+      </div>
+      <div class="fp__std-divider" aria-hidden="true"></div>
+      <div class="fp__std-item">
+        <span class="text-spec">DIN 12331</span>
+        <span class="fp__std-desc">Laboratory Glassware</span>
+      </div>
+      <div class="fp__std-divider" aria-hidden="true"></div>
+      <div class="fp__std-item">
+        <span class="text-spec">3.3 Borosilicate</span>
+        <span class="fp__std-desc">Thermal Shock ΔT ≥ 120°C</span>
+      </div>
+      <div class="fp__std-divider" aria-hidden="true"></div>
+      <div class="fp__std-item">
+        <span class="text-spec">Batch Traceable</span>
+        <span class="fp__std-desc">Full QC Documentation</span>
+      </div>
+    </div>
+
+  </div>
+</div>

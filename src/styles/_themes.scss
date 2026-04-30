@@ -1,0 +1,92 @@
+// ─── Theme CSS Custom Properties ─────────────────────────────────────────────
+// Light theme is DEFAULT (no class needed)
+// Dark theme applied via [data-theme="dark"] on <html>
+
+:root,
+[data-theme="light"] {
+  --color-base:             #F5F3FF;
+  --color-base-alt:         #EDE9FF;
+  --color-surface-1:        rgba(255,255,255,0.72);
+  --color-surface-2:        rgba(255,255,255,0.88);
+  --color-surface-3:        #FFFFFF;
+  --color-text-primary:     #1A162E;
+  --color-text-secondary:   #3D3560;
+  --color-text-tertiary:    #7A70A0;
+  --color-text-disabled:    #B8B0D0;
+  --color-text-inverse:     #FFFFFF;
+  --color-border:           rgba(26,22,46,0.10);
+  --color-border-strong:    rgba(200,151,255,0.40);
+  --color-accent-primary:   #C897FF;
+  --color-accent-primary-hover: #B77FFF;
+  --color-accent-secondary: #99D5FF;
+  --color-accent-secondary-hover: #7DC8FF;
+  --color-hover:            rgba(200,151,255,0.10);
+  --color-active:           rgba(200,151,255,0.20);
+  --color-shadow:           rgba(26,22,46,0.12);
+  --color-shadow-strong:    rgba(26,22,46,0.22);
+  --color-glow:             rgba(200,151,255,0.25);
+  --color-glow-cyan:        rgba(153,213,255,0.20);
+  --color-glow-hover:       rgba(200,151,255,0.60);
+  --color-glow-cyan-hover:  rgba(153,213,255,0.44);
+  --color-card-hover-bg:    rgba(242,238,255,0.97);
+
+  // Nav
+  --nav-bg:                 rgba(245,243,255,0.90);
+  --nav-border:             rgba(26,22,46,0.08);
+
+  // Gradient backgrounds
+  --grad-hero: radial-gradient(ellipse 80% 60% at 50% -10%, rgba(200,151,255,0.18) 0%, transparent 60%),
+               radial-gradient(ellipse 50% 40% at 80% 50%, rgba(153,213,255,0.12) 0%, transparent 50%),
+               #F5F3FF;
+
+  // Headline gradient — darker for light theme readability
+  --grad-headline-start: #6B21D6;
+  --grad-headline-end:   #0369A1;
+
+  // Logo
+  --logo-src:               url('/assets/stien-logo-color.png');
+}
+
+[data-theme="dark"] {
+  --color-base:             #1A162E;
+  --color-base-alt:         #221D38;
+  --color-surface-1:        rgba(255,255,255,0.05);
+  --color-surface-2:        rgba(255,255,255,0.09);
+  --color-surface-3:        rgba(255,255,255,0.14);
+  --color-text-primary:     #FFFFFF;
+  --color-text-secondary:   #E8D5FF;
+  --color-text-tertiary:    #A098B8;
+  --color-text-disabled:    #5C5475;
+  --color-text-inverse:     #1A162E;
+  --color-border:           rgba(200,151,255,0.18);
+  --color-border-strong:    rgba(153,213,255,0.28);
+  --color-accent-primary:   #C897FF;
+  --color-accent-primary-hover: #D9ACFF;
+  --color-accent-secondary: #99D5FF;
+  --color-accent-secondary-hover: #B0DEFF;
+  --color-hover:            rgba(200,151,255,0.12);
+  --color-active:           rgba(200,151,255,0.22);
+  --color-shadow:           rgba(0,0,0,0.40);
+  --color-shadow-strong:    rgba(0,0,0,0.60);
+  --color-glow:             rgba(200,151,255,0.35);
+  --color-glow-cyan:        rgba(153,213,255,0.30);
+  --color-glow-hover:       rgba(200,151,255,0.55);
+  --color-glow-cyan-hover:  rgba(153,213,255,0.40);
+  --color-card-hover-bg:    rgba(255,255,255,0.18);
+
+  // Nav
+  --nav-bg:                 rgba(26,22,46,0.90);
+  --nav-border:             rgba(200,151,255,0.12);
+
+  // Gradient backgrounds
+  --grad-hero: radial-gradient(ellipse 80% 60% at 50% -10%, rgba(200,151,255,0.25) 0%, transparent 60%),
+               radial-gradient(ellipse 50% 40% at 80% 50%, rgba(153,213,255,0.15) 0%, transparent 50%),
+               #1A162E;
+
+  // Headline gradient — light on dark
+  --grad-headline-start: #C897FF;
+  --grad-headline-end:   #99D5FF;
+
+  // Logo
+  --logo-src:               url('/assets/stien-logo-white.png');
+}

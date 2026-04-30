@@ -1,0 +1,50 @@
+<div class="geo section-padding">
+  <div class="geo__backdrop" aria-hidden="true"></div>
+
+  <div class="section-container">
+
+    <header class="geo__header">
+      <div class="section-badge">
+        <svg width="8" height="8" viewBox="0 0 8 8" aria-hidden="true"><circle cx="4" cy="4" r="4" fill="currentColor"/></svg>
+        Our Presence
+      </div>
+      <div class="arc-divider"></div>
+      <h2 class="text-h2 geo__title">
+        Where Our Glassware<br>
+        <em class="geo__title-em">Works</em>
+      </h2>
+      <p class="text-body-lg geo__subtitle">
+        Precision laboratory glassware manufactured in Tirunelveli, trusted by institutions
+        across South India for over 25 years.
+      </p>
+    </header>
+
+    <!-- Region cards -->
+    <div class="geo__grid" role="list" aria-label="Geographic presence">
+      @for (region of regions; track region.id) {
+        <div class="geo__region glass-elevated" role="listitem">
+
+          <div class="geo__region-header">
+            <div class="geo__region-meta">
+              <span class="geo__region-label text-label">{{ region.label }}</span>
+            </div>
+            <h3 class="geo__region-name">{{ region.name }}</h3>
+          </div>
+
+          <p class="geo__region-desc">{{ region.description }}</p>
+
+          <div class="geo__cities" aria-label="Cities served">
+            @for (city of region.cities; track city) {
+              <span class="geo__city">{{ city }}</span>
+            }
+            @if (region.cityNote) {
+              <span class="geo__city geo__city--note">{{ region.cityNote }}</span>
+            }
+          </div>
+
+        </div>
+      }
+    </div>
+
+  </div>
+</div>

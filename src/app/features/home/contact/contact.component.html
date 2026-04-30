@@ -1,0 +1,180 @@
+<div class="contact section-padding">
+  <div class="contact__backdrop" aria-hidden="true"></div>
+
+  <div class="section-container contact__layout">
+
+    <!-- Left: info -->
+    <div class="contact__info">
+      <div class="section-badge">
+        <svg width="8" height="8" viewBox="0 0 8 8" aria-hidden="true"><circle cx="4" cy="4" r="4" fill="currentColor"/></svg>
+        B2B Enquiries
+      </div>
+      <div class="arc-divider"></div>
+      <h2 class="text-h2 contact__title">
+        Request a<br>
+        <em class="contact__title-em">Quote</em>
+      </h2>
+      <p class="text-body-lg contact__sub">
+        Whether you need a single product specification or a complete laboratory
+        outfitting, our team responds to all B2B enquiries within one business day.
+      </p>
+
+      <div class="contact__details">
+        <a href="tel:+919894829932" class="contact__detail-row">
+          <div class="contact__detail-icon" aria-hidden="true">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 10a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 1.27h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.84a16 16 0 0 0 8.27 8.27l.93-.93a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          </div>
+          <div>
+            <div class="contact__detail-label">Phone</div>
+            <div class="contact__detail-value">+91 98948 29932</div>
+          </div>
+        </a>
+
+        <a href="mailto:stienglassware&#64;ymail.com" class="contact__detail-row">
+          <div class="contact__detail-icon" aria-hidden="true">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          </div>
+          <div>
+            <div class="contact__detail-label">Sales</div>
+            <div class="contact__detail-value">stienglassware&#64;ymail.com</div>
+          </div>
+        </a>
+
+        <a href="mailto:support&#64;stienglassware.com" class="contact__detail-row">
+          <div class="contact__detail-icon" aria-hidden="true">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+          </div>
+          <div>
+            <div class="contact__detail-label">Support</div>
+            <div class="contact__detail-value">support&#64;stienglassware.com</div>
+          </div>
+        </a>
+
+        <div class="contact__detail-row contact__detail-row--address">
+          <div class="contact__detail-icon" aria-hidden="true">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          </div>
+          <address>
+            <div class="contact__detail-label">Address</div>
+            <div class="contact__detail-value">15/6, Kumaara Veethi, Veeramanickapuram<br>Tirunelveli, Tamil Nadu — 627005</div>
+          </address>
+        </div>
+      </div>
+    </div>
+
+    <!-- Right: form -->
+    <div class="contact__form-wrap glass-elevated">
+      @if (!submitted()) {
+        <form class="contact__form" (ngSubmit)="onSubmit()" #quoteForm="ngForm" novalidate>
+          <h3 class="contact__form-title">B2B Quote Request</h3>
+
+          <div class="contact__fields">
+            <div class="contact__field">
+              <label for="cf-name" class="contact__label">Full Name <span aria-hidden="true">*</span></label>
+              <input
+                id="cf-name"
+                type="text"
+                class="contact__input"
+                [(ngModel)]="form.name"
+                name="name"
+                required
+                autocomplete="name"
+                placeholder="Dr. Priya Rajan"
+              />
+            </div>
+
+            <div class="contact__field">
+              <label for="cf-org" class="contact__label">Organisation <span aria-hidden="true">*</span></label>
+              <input
+                id="cf-org"
+                type="text"
+                class="contact__input"
+                [(ngModel)]="form.organisation"
+                name="organisation"
+                required
+                autocomplete="organization"
+                placeholder="Government College of Arts and Science"
+              />
+            </div>
+
+            <div class="contact__field">
+              <label for="cf-email" class="contact__label">Email Address <span aria-hidden="true">*</span></label>
+              <input
+                id="cf-email"
+                type="email"
+                class="contact__input"
+                [(ngModel)]="form.email"
+                name="email"
+                required
+                autocomplete="email"
+                placeholder="priya&#64;example.edu"
+              />
+            </div>
+
+            <div class="contact__field">
+              <label for="cf-phone" class="contact__label">Phone</label>
+              <input
+                id="cf-phone"
+                type="tel"
+                class="contact__input"
+                [(ngModel)]="form.phone"
+                name="phone"
+                autocomplete="tel"
+                placeholder="+91 98000 00000"
+              />
+            </div>
+
+            <div class="contact__field contact__field--full">
+              <label for="cf-products" class="contact__label">Products of Interest <span aria-hidden="true">*</span></label>
+              <input
+                id="cf-products"
+                type="text"
+                class="contact__input"
+                [(ngModel)]="form.products"
+                name="products"
+                required
+                placeholder="e.g. Class A Volumetric Flask 250 mL, Burette 50 mL"
+              />
+            </div>
+
+            <div class="contact__field contact__field--full">
+              <label for="cf-msg" class="contact__label">Message</label>
+              <textarea
+                id="cf-msg"
+                class="contact__input contact__textarea"
+                [(ngModel)]="form.message"
+                name="message"
+                rows="4"
+                placeholder="Please include quantities, delivery location, and any special requirements."
+              ></textarea>
+            </div>
+          </div>
+
+          <button
+            type="submit"
+            class="btn-primary contact__submit"
+            [disabled]="!quoteForm.valid"
+          >
+            Submit Enquiry
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+          </button>
+        </form>
+      } @else {
+        <div class="contact__success" role="status" aria-live="polite">
+          <div class="contact__success-icon" aria-hidden="true">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+          </div>
+          <h3 class="contact__success-title">Enquiry Received</h3>
+          <p class="contact__success-body">
+            Thank you for your interest. Our team will respond to your B2B enquiry
+            within one business day at <strong>{{ form.email }}</strong>.
+          </p>
+          <button type="button" class="btn-secondary contact__reset" (click)="resetForm()">
+            Submit Another Enquiry
+          </button>
+        </div>
+      }
+    </div>
+
+  </div>
+</div>

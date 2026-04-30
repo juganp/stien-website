@@ -1,0 +1,156 @@
+@use 'variables' as *;
+
+.geo {
+  position: relative;
+  background: var(--color-base-alt);
+  overflow: hidden;
+
+  &__backdrop {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background:
+      radial-gradient(ellipse 60% 40% at 50% 0%, rgba(200,151,255,0.08) 0%, transparent 60%),
+      radial-gradient(ellipse 30% 50% at 100% 100%, rgba(153,213,255,0.06) 0%, transparent 50%);
+  }
+
+  &__header {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+    max-width: 560px;
+    margin-bottom: 64px;
+  }
+
+  &__title { color: var(--color-text-primary); }
+
+  &__title-em {
+    font-style: italic;
+    color: var(--color-accent-primary);
+  }
+
+  &__subtitle {
+    color: var(--color-text-secondary);
+    max-width: 480px;
+  }
+
+  // ─── Region grid ─────────────────────────────────────────────────────────────
+
+  &__grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 24px;
+    align-items: stretch;
+
+    @media (min-width: 768px) {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+
+  &__region {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 28px;
+    transition: transform $duration-normal $ease-spring,
+                box-shadow $duration-normal $ease-smooth,
+                border-color $duration-normal $ease-smooth;
+
+    &:hover {
+      transform: translateY(-4px);
+      border-color: var(--color-border-strong);
+      box-shadow:
+        0 0 0 1.5px var(--color-border-strong),
+        0 0 24px 8px var(--color-glow),
+        0 16px 40px var(--color-shadow-strong),
+        inset 0 1px 0 rgba(255,255,255,0.20);
+    }
+  }
+
+  &__region-header {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  &__region-meta {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  &__region-label {
+    display: block;
+  }
+
+  &__region-name {
+    font-family: 'Fraunces', Georgia, serif;
+    font-size: 24px;
+    font-weight: 600;
+    letter-spacing: -0.02em;
+    line-height: 1.15;
+    color: var(--color-text-primary);
+    transition: color $duration-normal $ease-smooth;
+
+    .geo__region:hover & {
+      color: var(--color-accent-primary);
+    }
+  }
+
+  &__region-desc {
+    font-size: 14px;
+    line-height: 1.65;
+    color: var(--color-text-tertiary);
+    margin: 0;
+    flex: 1;
+  }
+
+  // ─── City chips ──────────────────────────────────────────────────────────────
+
+  &__cities {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: auto;
+    padding-top: 16px;
+    border-top: 1px solid var(--color-border);
+    transition: border-color $duration-normal $ease-smooth;
+
+    .geo__region:hover & {
+      border-color: var(--color-border-strong);
+    }
+  }
+
+  &__city {
+    padding: 4px 12px;
+    border: 1px solid var(--color-border);
+    border-radius: $radius-full;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.04em;
+    color: var(--color-text-secondary);
+    background: var(--color-surface-1);
+    transition: border-color $duration-fast $ease-smooth,
+                color $duration-fast $ease-smooth;
+
+    .geo__region:hover & {
+      border-color: var(--color-border-strong);
+      color: var(--color-accent-secondary);
+    }
+
+    &--note {
+      color: var(--color-text-disabled);
+      border-style: dashed;
+      font-style: italic;
+      letter-spacing: 0.02em;
+
+      .geo__region:hover & {
+        color: var(--color-text-tertiary);
+        border-color: var(--color-border);
+      }
+    }
+  }
+}

@@ -1,0 +1,283 @@
+@use 'variables' as *;
+
+// ─── Card entrance animation ──────────────────────────────────────────────────
+@keyframes card-enter {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.testimonials {
+  position: relative;
+  background: var(--color-base);
+  overflow: hidden;
+
+  // Backdrop gradients
+  &::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background:
+      radial-gradient(ellipse 55% 50% at 0% 30%, rgba(200,151,255,0.07) 0%, transparent 60%),
+      radial-gradient(ellipse 45% 45% at 100% 70%, rgba(153,213,255,0.06) 0%, transparent 55%);
+  }
+
+  &__header {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+    max-width: 560px;
+    margin-bottom: 56px;
+  }
+
+  &__title {
+    color: var(--color-text-primary);
+  }
+
+  &__title-em {
+    font-style: italic;
+    color: var(--color-accent-primary);
+  }
+
+  &__subtitle {
+    color: var(--color-text-secondary);
+    max-width: 480px;
+  }
+
+  // ─── Quote grid ────────────────────────────────────────────────────────────
+  &__grid {
+    position: relative;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 24px;
+    margin-bottom: 56px;
+
+    @media (min-width: 768px) {
+      grid-template-columns: repeat(3, 1fr);
+    }
+
+    // Stagger entrance — paused until in-view
+    > article {
+      opacity: 0;
+      animation: card-enter $duration-slow $ease-spring both;
+      animation-play-state: paused;
+    }
+
+    &.in-view > article {
+      animation-play-state: running;
+
+      &:nth-child(1) { animation-delay: 0ms; }
+      &:nth-child(2) { animation-delay: 100ms; }
+      &:nth-child(3) { animation-delay: 200ms; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      > article {
+        opacity: 1;
+        animation: none;
+      }
+    }
+  }
+
+  // ─── Quote card ────────────────────────────────────────────────────────────
+  &__card {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    padding: 32px;
+
+    @media (max-width: $bp-sm) {
+      padding: 20px;
+      gap: 16px;
+    }
+
+    transition:
+      transform $duration-normal $ease-spring,
+      box-shadow $duration-normal $ease-smooth,
+      border-color $duration-normal $ease-smooth;
+
+    &:hover {
+      transform: translateY(-4px);
+      border-color: var(--color-border-strong);
+      box-shadow:
+        0 12px 40px var(--color-shadow),
+        0 0 0 1px var(--color-border-strong),
+        0 0 24px rgba(200,151,255,0.12);
+    }
+  }
+
+  &__quote-mark {
+    color: var(--color-accent-primary);
+    opacity: 0.35;
+    flex-shrink: 0;
+    line-height: 1;
+  }
+
+  &__quote {
+    font-family: 'Fraunces', Georgia, serif;
+    font-size: 15px;
+    font-weight: 400;
+    line-height: 1.75;
+    color: var(--color-text-secondary);
+    margin: 0;
+    flex: 1;
+    font-style: italic;
+    letter-spacing: -0.01em;
+  }
+
+  // ─── Attribution ───────────────────────────────────────────────────────────
+  &__attribution {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    padding-top: 20px;
+    border-top: 1px solid var(--color-border);
+  }
+
+  &__avatar {
+    width: 40px;
+    height: 40px;
+    flex-shrink: 0;
+    border-radius: 50%;
+    background: linear-gradient(135deg, rgba(200,151,255,0.25) 0%, rgba(153,213,255,0.20) 100%);
+    border: 1px solid var(--color-border-strong);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  &__initials {
+    font-size: 11px;
+    font-weight: 500;
+    color: var(--color-accent-primary);
+    letter-spacing: 0.04em;
+  }
+
+  &__person {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    min-width: 0;
+  }
+
+  &__name {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--color-text-primary);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  &__role {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 12px;
+    color: var(--color-text-tertiary);
+  }
+
+  &__institution {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    color: var(--color-text-disabled);
+    letter-spacing: 0.03em;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+
+    @media (max-width: $bp-sm) {
+      white-space: normal;
+      overflow: visible;
+      text-overflow: unset;
+      word-break: break-word;
+    }
+  }
+
+  // ─── Institution strip ─────────────────────────────────────────────────────
+  &__strip-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    padding: 28px 32px;
+    background: var(--color-surface-1);
+    border: 1px solid var(--color-border);
+    border-radius: $radius-xl;
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+
+    @media (max-width: $bp-sm) {
+      padding: 20px 16px;
+    }
+  }
+
+  &__strip-label {
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--color-text-disabled);
+    margin: 0;
+  }
+
+  &__strip {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  &__inst-chip {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    padding: 8px 14px;
+    background: var(--color-surface-2);
+    border: 1px solid var(--color-border);
+    border-radius: $radius-full;
+    max-width: 100%;
+    overflow: hidden;
+    transition:
+      border-color $duration-fast $ease-smooth,
+      background $duration-fast $ease-smooth;
+
+    &:hover {
+      border-color: var(--color-border-strong);
+      background: var(--color-hover);
+    }
+  }
+
+  &__inst-name {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--color-text-secondary);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  &__inst-type {
+    font-size: 10px;
+    color: var(--color-text-disabled);
+    letter-spacing: 0.03em;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  &__strip-note {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 11px;
+    color: var(--color-text-disabled);
+    font-style: italic;
+    margin: 0;
+    padding-top: 4px;
+    border-top: 1px solid var(--color-border);
+  }
+}

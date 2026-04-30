@@ -1,0 +1,59 @@
+// ─── Brand Constants ─────────────────────────────────────────────────────────
+$accent-primary:   #C897FF;   // Electric Lavender
+$accent-secondary: #99D5FF;   // Cyan Frost
+$brand-violet:     #1A162E;   // Midnight Violet
+
+// ─── 8pt Spacing Scale ───────────────────────────────────────────────────────
+$space-1:  4px;
+$space-2:  8px;
+$space-3:  12px;
+$space-4:  16px;
+$space-6:  24px;
+$space-8:  32px;
+$space-10: 40px;
+$space-12: 48px;
+$space-16: 64px;
+$space-20: 80px;
+$space-24: 96px;
+$space-30: 120px;
+$space-40: 160px;
+
+// ─── Type Scale ──────────────────────────────────────────────────────────────
+$font-display: 'Fraunces', Georgia, serif;
+$font-body:    'DM Sans', system-ui, sans-serif;
+$font-mono:    'JetBrains Mono', 'Courier New', monospace;
+
+$fs-display-xl: 96px;
+$fs-display:    80px;
+$fs-h1:         56px;
+$fs-h2:         40px;
+$fs-h3:         28px;
+$fs-h4:         20px;
+$fs-body-lg:    18px;
+$fs-body:       16px;
+$fs-body-sm:    14px;
+$fs-caption:    12px;
+$fs-spec:       13px;
+
+// ─── Border Radius ───────────────────────────────────────────────────────────
+$radius-sm:  8px;
+$radius-md:  12px;
+$radius-lg:  16px;
+$radius-xl:  20px;
+$radius-2xl: 28px;
+$radius-full: 9999px;
+
+// ─── Responsive Breakpoints ──────────────────────────────────────────────────
+$bp-xs:  480px;   // Large phones (landscape)
+$bp-sm:  640px;   // Small tablets / large phones
+$bp-md:  768px;   // Tablets
+$bp-lg:  1024px;  // Small desktops / large tablets
+$bp-xl:  1280px;  // Desktops
+$bp-2xl: 1536px;  // Large desktops
+
+// ─── Transitions ─────────────────────────────────────────────────────────────
+$ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+$ease-smooth: cubic-bezier(0.4, 0, 0.2, 1);
+$duration-fast:   150ms;
+$duration-normal: 250ms;
+$duration-slow:   400ms;

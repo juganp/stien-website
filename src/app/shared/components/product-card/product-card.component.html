@@ -1,0 +1,71 @@
+<article class="card glass-card glow-border" [attr.aria-label]="product.name">
+
+  <!-- Header -->
+  <div class="card__header">
+    <div class="card__icon" aria-hidden="true">
+      @if (product.iconUrl) {
+        <img [src]="product.iconUrl"
+             [alt]="product.name"
+             class="card__flask-icon"
+             loading="lazy"
+             draggable="false"/>
+      } @else {
+        <svg viewBox="0 0 64 80" fill="none" xmlns="http://www.w3.org/2000/svg" class="card__flask-icon">
+          <rect x="24" y="4" width="16" height="28" rx="2" fill="rgba(200,151,255,0.12)" stroke="rgba(200,151,255,0.5)" stroke-width="1.5"/>
+          <line x1="36" y1="12" x2="40" y2="12" stroke="rgba(153,213,255,0.7)" stroke-width="1"/>
+          <line x1="36" y1="20" x2="40" y2="20" stroke="rgba(153,213,255,0.7)" stroke-width="1"/>
+          <path d="M24 32 L8 64 Q6 74 32 74 Q58 74 56 64 L40 32 Z"
+                fill="rgba(200,151,255,0.08)" stroke="rgba(200,151,255,0.45)" stroke-width="1.5"/>
+          <path d="M11 57 Q9 70 32 70 Q55 70 53 57 Z" fill="rgba(153,213,255,0.18)"/>
+          <line x1="9" y1="46" x2="15" y2="46" stroke="rgba(153,213,255,0.5)" stroke-width="1"/>
+          <line x1="8" y1="56" x2="15" y2="56" stroke="rgba(153,213,255,0.5)" stroke-width="1"/>
+          <path d="M26 36 L14 62" stroke="rgba(255,255,255,0.15)" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+      }
+    </div>
+
+    <div class="card__meta">
+      <span class="card__class" [class.card__class--a]="product.classType === 'Class A'">
+        {{ product.classType }}
+      </span>
+      <span class="card__category">{{ product.category }}</span>
+    </div>
+  </div>
+
+  <!-- Content -->
+  <div class="card__body">
+    <h3 class="card__name">{{ product.name }}</h3>
+    <p class="card__material text-spec">{{ product.material }}</p>
+    <p class="card__desc">{{ product.description }}</p>
+  </div>
+
+  <!-- Sizes -->
+  <div class="card__sizes">
+    @for (size of product.sizes.slice(0, 4); track size) {
+      <span class="card__size">{{ size }}</span>
+    }
+    @if (product.sizes.length > 4) {
+      <span class="card__size card__size--more">+{{ product.sizes.length - 4 }}</span>
+    }
+  </div>
+
+  <!-- Specs (revealed on hover) -->
+  <div class="card__specs">
+    @for (spec of product.specs; track spec.label) {
+      <div class="card__spec-row">
+        <span class="card__spec-label">{{ spec.label }}</span>
+        <span class="card__spec-value text-spec">{{ spec.value }}</span>
+      </div>
+    }
+  </div>
+
+  <!-- Footer -->
+  <div class="card__footer">
+    <span class="card__tolerance text-spec">{{ product.tolerance }}</span>
+    <button class="card__cta btn-ghost" type="button" [attr.aria-label]="'Request quote for ' + product.name">
+      Request Quote
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+    </button>
+  </div>
+
+</article>

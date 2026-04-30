@@ -1,0 +1,77 @@
+<div class="about section-padding">
+  <div class="section-container about__layout">
+
+    <!-- Left: narrative -->
+    <div class="about__copy">
+      <div class="section-badge">
+        <svg width="8" height="8" viewBox="0 0 8 8" aria-hidden="true"><circle cx="4" cy="4" r="4" fill="currentColor"/></svg>
+        Our Heritage
+      </div>
+      <div class="arc-divider"></div>
+      <h2 class="text-h2 about__title">
+        A Legacy of Precision —<br>
+        <em class="about__title-em">Founded 2000</em>
+      </h2>
+      <p class="about__para text-body-lg">
+        For 25 years, Stien Glassware and Equipments has operated from the heart of
+        Tirunelveli, Tamil Nadu — crafting laboratory glassware that meets the demands
+        of modern science. Every piece leaves our facility conforming to rigorous
+        internal quality control benchmarks aligned with global material standards.
+      </p>
+      <p class="about__para">
+        Our manufacturing processes adhere to international dimensional tolerances,
+        and each production batch undergoes traceable validation before dispatch. We
+        supply educational institutions, pharmaceutical laboratories, and industrial
+        research facilities with apparatus that performs precisely as specified —
+        Class A accuracy, every time.
+      </p>
+
+      <div class="about__values">
+        <div class="about__value">
+          <div class="about__value-icon" aria-hidden="true">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+          </div>
+          <div>
+            <h4 class="about__value-title">Traceable Manufacturing</h4>
+            <p class="about__value-desc">Batch-level documentation from raw material to final inspection.</p>
+          </div>
+        </div>
+        <div class="about__value">
+          <div class="about__value-icon" aria-hidden="true">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+          </div>
+          <div>
+            <h4 class="about__value-title">Aligned with Global Standards</h4>
+            <p class="about__value-desc">Manufactured to ASTM E438 and DIN 12331 material standards.</p>
+          </div>
+        </div>
+        <div class="about__value">
+          <div class="about__value-icon" aria-hidden="true">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          </div>
+          <div>
+            <h4 class="about__value-title">25+ Years Unbroken</h4>
+            <p class="about__value-desc">A quarter-century of consistent quality for South Indian science.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Right: timeline -->
+    <div class="about__timeline" aria-label="Company milestones">
+      <div class="about__timeline-line" aria-hidden="true"></div>
+      @for (m of milestones; track m.year; let i = $index) {
+        <div class="about__milestone" [style.animation-delay]="(i * 0.1) + 's'">
+          <div class="about__milestone-dot" aria-hidden="true">
+            <div class="about__milestone-inner"></div>
+          </div>
+          <div class="about__milestone-card glass">
+            <span class="about__milestone-year text-spec">{{ m.year }}</span>
+            <p class="about__milestone-text">{{ m.event }}</p>
+          </div>
+        </div>
+      }
+    </div>
+
+  </div>
+</div>

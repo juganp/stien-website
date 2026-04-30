@@ -1,0 +1,88 @@
+<nav class="nav" [class.nav--scrolled]="scrolled()">
+  <div class="nav__inner">
+
+    <!-- Logo -->
+    <a href="/" class="nav__logo-link" aria-label="Stien Glassware home">
+      @if (isDark$ | async) {
+        <img src="assets/stien-logo-white.png" alt="Stien Glassware and Equipments" class="nav__logo" />
+      } @else {
+        <img src="assets/stien-logo-color.png" alt="Stien Glassware and Equipments" class="nav__logo" />
+      }
+    </a>
+
+    <!-- Desktop links -->
+    <ul class="nav__links" role="list">
+      <li><a href="#products" class="nav__link" (click)="scrollTo('products', $event)">Products</a></li>
+      <li><a href="#about" class="nav__link" (click)="scrollTo('about', $event)">About</a></li>
+      <li><a href="#quality" class="nav__link" (click)="scrollTo('quality', $event)">Quality</a></li>
+      <li><a href="#industries" class="nav__link" (click)="scrollTo('industries', $event)">Industries</a></li>
+      <li><a href="#contact" class="nav__link" (click)="scrollTo('contact', $event)">Contact</a></li>
+    </ul>
+
+    <!-- Actions -->
+    <div class="nav__actions">
+      <!-- Theme toggle -->
+      <button
+        class="nav__theme-btn"
+        (click)="toggleTheme()"
+        [attr.aria-label]="(isDark$ | async) ? 'Switch to light theme' : 'Switch to dark theme'"
+        type="button"
+      >
+        @if (isDark$ | async) {
+          <!-- Sun icon -->
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <circle cx="12" cy="12" r="5"/>
+            <line x1="12" y1="1" x2="12" y2="3"/>
+            <line x1="12" y1="21" x2="12" y2="23"/>
+            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/>
+            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/>
+            <line x1="1" y1="12" x2="3" y2="12"/>
+            <line x1="21" y1="12" x2="23" y2="12"/>
+            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/>
+            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
+          </svg>
+        } @else {
+          <!-- Moon icon -->
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+          </svg>
+        }
+      </button>
+
+      <!-- Get a Quote CTA -->
+      <a
+        href="#contact"
+        class="nav__cta btn-primary"
+        (click)="scrollTo('contact', $event)"
+      >
+        Get a Quote
+      </a>
+
+      <!-- Hamburger -->
+      <button
+        class="nav__hamburger"
+        [class.nav__hamburger--open]="menuOpen()"
+        (click)="toggleMenu()"
+        aria-label="Toggle navigation menu"
+        [attr.aria-expanded]="menuOpen()"
+        type="button"
+      >
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </div>
+
+  <!-- Mobile menu -->
+  <div class="nav__mobile" [class.nav__mobile--open]="menuOpen()" role="dialog" aria-label="Navigation menu">
+    <ul role="list">
+      <li><a href="#products" (click)="scrollTo('products', $event)">Products</a></li>
+      <li><a href="#about" (click)="scrollTo('about', $event)">About</a></li>
+      <li><a href="#quality" (click)="scrollTo('quality', $event)">Quality</a></li>
+      <li><a href="#industries" (click)="scrollTo('industries', $event)">Industries</a></li>
+      <li><a href="#contact" (click)="scrollTo('contact', $event)">Contact</a></li>
+    </ul>
+    <a href="#contact" class="btn-primary" (click)="scrollTo('contact', $event)">Get a Quote</a>
+  </div>
+</nav>
