@@ -31,7 +31,7 @@ export class TestimonialsComponent implements AfterViewInit {
   readonly testimonials: Testimonial[] = [
     {
       id: 'placeholder-1',
-      quote: 'The volumetric accuracy of Stien\'s Class A flasks has been consistently reliable across every batch we have received. Our laboratory team depends on them for every titrimetric and gravimetric analysis we conduct.',
+      quote: 'The volumetric accuracy of Stien\'s flasks has been consistently reliable across every batch we have received. Our laboratory team depends on them for every titrimetric and gravimetric analysis we conduct.',
       name: 'Name, Designation',
       role: 'Laboratory Supervisor',
       institution: 'Institution Name',
@@ -49,7 +49,7 @@ export class TestimonialsComponent implements AfterViewInit {
     },
     {
       id: 'placeholder-3',
-      quote: 'A dependable partner for our institution\'s laboratory requirements for many years. Supply has been consistent, communication is responsive, and the Class A apparatus performs exactly as specified for our programmes.',
+      quote: 'A dependable partner for our institution\'s laboratory requirements for many years. Supply has been consistent, communication is responsive, and the apparatus performs exactly as specified for our programmes.',
       name: 'Name, Designation',
       role: 'Procurement Officer',
       institution: 'Institution Name',
@@ -60,12 +60,14 @@ export class TestimonialsComponent implements AfterViewInit {
 
   // TODO: Replace with confirmed institution names (with permission)
   readonly institutions: Institution[] = [
-    { name: 'Institution Name', type: 'Government College · Tamil Nadu' },
-    { name: 'Institution Name', type: 'Engineering College · Tamil Nadu' },
-    { name: 'Institution Name', type: 'Research Laboratory · Tamil Nadu' },
-    { name: 'Institution Name', type: 'Educational Institution · Kerala' },
-    { name: 'Institution Name', type: 'Pharmaceutical Laboratory · Tamil Nadu' },
-    { name: 'Institution Name', type: 'Industrial Facility · Tamil Nadu' },
+    { name: 'Tuticorin Alkali Chemicals & Fertilisers Limited (TACFERT)', type: 'Industrial · Tamil Nadu' },
+    { name: 'Kelvin Labs', type: 'Lab Consultancy · Kerala' },
+    { name: "St.Mary's college (Autonomous)", type: 'Institution · Thoothukudi, Tamil Nadu' },
+    { name: 'Austro Carbon Private Limited', type: 'Research Laboratory · Tamil Nadu' },
+    { name: 'Sarah Tucker College', type: 'Institution · Tirunelveli, Tamil Nadu' },
+    { name: "Servite Art's & Science College for Women", type: 'Institution · Thogamalai, Tamil Nadu' },
+    { name: 'CG Carbon', type: 'Research Laboratory · Kerala' },
+
   ];
 
   ngAfterViewInit(): void {
