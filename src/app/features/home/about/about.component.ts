@@ -8,7 +8,7 @@ import { Component } from '@angular/core';
 })
 export class AboutComponent {
   readonly milestones = [
-    { year: '2000', event: 'Founded in Tirunelveli, Tamil Nadu. Class A volumetric apparatus manufactured from the first production line.' },
+    { year: '2000', event: 'Founded in Tirunelveli, Tamil Nadu. Precision volumetric apparatus manufactured from the first production line.' },
     { year: '2002', event: 'Relocated to own manufacturing facility, establishing a dedicated production base.' },
     { year: '2005', event: 'First supply relationships established with institutions beyond South Tamil Nadu.' },
     { year: '2023', event: 'UDYAM registration achieved — formally recognised as a manufacturing enterprise.' },

@@ -17,8 +17,8 @@ export class QualityComponent {
     {
       icon: 'tolerance',
       title: 'Dimensional Tolerances',
-      body: 'Manufactured to international dimensional tolerances. Class A volumetric ware calibrated at 20°C reference temperature with traceable measurement equipment.',
-      spec: 'Class A: ±0.03–0.40 mL',
+      body: 'Manufactured to international dimensional tolerances. Volumetric ware calibrated at 20°C reference temperature with traceable measurement equipment. Class A grade available on request.',
+      spec: '±0.03–0.40 mL at 20°C',
     },
     {
       icon: 'thermal',

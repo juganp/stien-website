@@ -32,10 +32,10 @@ export class IndustriesComponent {
     {
       id: 'pharma',
       label: 'Pharmaceutical & R&D',
-      headline: 'Class A Precision for Critical Analysis',
-      body: 'Pharmaceutical quality control and R&D laboratories demand Class A accuracy with full documentation traceability. Our volumetric flasks, burettes, and Kjeldahl apparatus are manufactured to ASTM E288 and ASTM E287 standards — delivering the ±0.03–0.40 mL tolerances required for validated analytical methods under GMP and GLP environments.',
-      products: ['Class A Volumetric Flask', 'Class A Burette', 'Kjeldahl Digestion Flask', 'Liebig Condenser', 'Separatory Funnel', 'Reagent Bottle Amber'],
-      spec: 'Class A Accuracy • ASTM E288 • GMP Compatible',
+      headline: 'Precision Apparatus for Critical Analysis',
+      body: 'Pharmaceutical quality control and R&D laboratories demand rigorous accuracy with full documentation traceability. Our volumetric flasks, burettes, and Kjeldahl apparatus are manufactured to ASTM E288 and ASTM E287 standards — delivering the ±0.03–0.40 mL tolerances required for validated analytical methods under GMP and GLP environments. Class A grade available on request.',
+      products: ['Volumetric Flask', 'Graduated Burette', 'Kjeldahl Digestion Flask', 'Liebig Condenser', 'Separatory Funnel', 'Reagent Bottle Amber'],
+      spec: 'ASTM E288 • GMP Compatible • Class A on Request',
     },
     {
       id: 'industrial',
