@@ -51,12 +51,14 @@
 
   <!-- Specs (revealed on hover) -->
   <div class="card__specs">
-    @for (spec of product.specs; track spec.label) {
-      <div class="card__spec-row">
-        <span class="card__spec-label">{{ spec.label }}</span>
-        <span class="card__spec-value text-spec">{{ spec.value }}</span>
-      </div>
-    }
+    <div>
+      @for (spec of product.specs; track spec.label) {
+        <div class="card__spec-row">
+          <span class="card__spec-label">{{ spec.label }}</span>
+          <span class="card__spec-value text-spec">{{ spec.value }}</span>
+        </div>
+      }
+    </div>
   </div>
 
   <!-- Footer -->

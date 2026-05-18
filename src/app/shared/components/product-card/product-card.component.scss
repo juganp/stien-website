@@ -25,13 +25,19 @@
     height: 60px;
     flex-shrink: 0;
     filter: drop-shadow(0 0 8px rgba(200,151,255,0.3));
-    transition: filter $duration-normal $ease-smooth,
+    transition: filter $duration-normal $ease-out,
                 transform $duration-normal $ease-spring;
 
-    .card:hover &,
     .card:focus-within & {
       filter: drop-shadow(0 0 16px rgba(200,151,255,0.65));
       transform: translateY(-4px) scale(1.07);
+    }
+
+    @media (hover: hover) and (pointer: fine) {
+      .card:hover & {
+        filter: drop-shadow(0 0 16px rgba(200,151,255,0.65));
+        transform: translateY(-4px) scale(1.07);
+      }
     }
   }
 
@@ -90,11 +96,16 @@
     letter-spacing: -0.02em;
     line-height: 1.2;
     color: var(--color-text-primary);
-    transition: color $duration-normal $ease-smooth;
+    transition: color $duration-normal $ease-out;
 
-    .card:hover &,
     .card:focus-within & {
       color: var(--color-accent-primary);
+    }
+
+    @media (hover: hover) and (pointer: fine) {
+      .card:hover & {
+        color: var(--color-accent-primary);
+      }
     }
   }
 
@@ -129,13 +140,19 @@
     font-size: 11px;
     color: var(--color-text-secondary);
     background: var(--color-surface-1);
-    transition: border-color $duration-fast $ease-smooth,
-                color $duration-fast $ease-smooth;
+    transition: border-color $duration-fast $ease-out,
+                color $duration-fast $ease-out;
 
-    .card:hover &,
     .card:focus-within & {
       border-color: var(--color-border-strong);
       color: var(--color-accent-secondary);
+    }
+
+    @media (hover: hover) and (pointer: fine) {
+      .card:hover & {
+        border-color: var(--color-border-strong);
+        color: var(--color-accent-secondary);
+      }
     }
 
     &--more {
@@ -145,19 +162,29 @@
   }
 
   &__specs {
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-    overflow: hidden;
-    max-height: 0;
+    display: grid;
+    grid-template-rows: 0fr;
     opacity: 0;
-    transition: max-height $duration-slow $ease-smooth,
-                opacity $duration-normal $ease-smooth;
+    transition: grid-template-rows $duration-slow $ease-out,
+                opacity $duration-normal $ease-out;
 
-    .card:hover &,
+    > div {
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
     .card:focus-within & {
-      max-height: 200px;
+      grid-template-rows: 1fr;
       opacity: 1;
+    }
+
+    @media (hover: hover) and (pointer: fine) {
+      .card:hover & {
+        grid-template-rows: 1fr;
+        opacity: 1;
+      }
     }
   }
 
@@ -193,11 +220,16 @@
     padding-top: 12px;
     border-top: 1px solid var(--color-border);
     margin-top: auto;
-    transition: border-color $duration-normal $ease-smooth;
+    transition: border-color $duration-normal $ease-out;
 
-    .card:hover &,
     .card:focus-within & {
       border-color: var(--color-border-strong);
+    }
+
+    @media (hover: hover) and (pointer: fine) {
+      .card:hover & {
+        border-color: var(--color-border-strong);
+      }
     }
   }
 
@@ -209,17 +241,24 @@
     font-size: 12px;
     padding: 6px 12px;
     cursor: pointer;
-    transition: color $duration-fast $ease-smooth,
-                border-color $duration-fast $ease-smooth,
-                background $duration-fast $ease-smooth,
+    transition: color $duration-fast $ease-out,
+                border-color $duration-fast $ease-out,
+                background $duration-fast $ease-out,
                 transform $duration-fast $ease-spring,
-                box-shadow $duration-fast $ease-smooth;
+                box-shadow $duration-fast $ease-out;
 
-    .card:hover &,
     .card:focus-within & {
       color: var(--color-accent-primary);
       border-color: rgba(200,151,255,0.55);
       background: rgba(200,151,255,0.10);
+    }
+
+    @media (hover: hover) and (pointer: fine) {
+      .card:hover & {
+        color: var(--color-accent-primary);
+        border-color: rgba(200,151,255,0.55);
+        background: rgba(200,151,255,0.10);
+      }
     }
 
     &:focus-visible {

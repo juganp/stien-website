@@ -63,12 +63,14 @@
     border: 1px solid var(--color-border-strong);
     color: var(--color-accent-primary);
     flex-shrink: 0;
-    transition: background $duration-fast $ease-smooth,
+    transition: background $duration-fast $ease-out,
                 transform $duration-normal $ease-spring;
 
-    .quality__card:hover & {
-      background: rgba(200,151,255,0.15);
-      transform: scale(1.08);
+    @media (hover: hover) and (pointer: fine) {
+      .quality__card:hover & {
+        background: rgba(200,151,255,0.15);
+        transform: scale(1.08);
+      }
     }
   }
 

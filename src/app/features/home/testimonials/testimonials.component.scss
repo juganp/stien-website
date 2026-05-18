@@ -75,8 +75,8 @@
       animation-play-state: running;
 
       &:nth-child(1) { animation-delay: 0ms; }
-      &:nth-child(2) { animation-delay: 100ms; }
-      &:nth-child(3) { animation-delay: 200ms; }
+      &:nth-child(2) { animation-delay: 60ms; }
+      &:nth-child(3) { animation-delay: 120ms; }
     }
 
     @media (prefers-reduced-motion: reduce) {
@@ -93,24 +93,25 @@
     flex-direction: column;
     gap: 24px;
     padding: 32px;
+    transition:
+      transform $duration-normal $ease-out,
+      box-shadow $duration-normal $ease-out,
+      border-color $duration-normal $ease-out;
 
     @media (max-width: $bp-sm) {
       padding: 20px;
       gap: 16px;
     }
 
-    transition:
-      transform $duration-normal $ease-spring,
-      box-shadow $duration-normal $ease-smooth,
-      border-color $duration-normal $ease-smooth;
-
-    &:hover {
-      transform: translateY(-4px);
-      border-color: var(--color-border-strong);
-      box-shadow:
-        0 12px 40px var(--color-shadow),
-        0 0 0 1px var(--color-border-strong),
-        0 0 24px rgba(200,151,255,0.12);
+    @media (hover: hover) and (pointer: fine) {
+      &:hover {
+        transform: translateY(-4px);
+        border-color: var(--color-border-strong);
+        box-shadow:
+          0 12px 40px var(--color-shadow),
+          0 0 0 1px var(--color-border-strong),
+          0 0 24px rgba(200,151,255,0.12);
+      }
     }
   }
 
@@ -243,12 +244,14 @@
     max-width: 100%;
     overflow: hidden;
     transition:
-      border-color $duration-fast $ease-smooth,
-      background $duration-fast $ease-smooth;
+      border-color $duration-fast $ease-out,
+      background $duration-fast $ease-out;
 
-    &:hover {
-      border-color: var(--color-border-strong);
-      background: var(--color-hover);
+    @media (hover: hover) and (pointer: fine) {
+      &:hover {
+        border-color: var(--color-border-strong);
+        background: var(--color-hover);
+      }
     }
   }
 

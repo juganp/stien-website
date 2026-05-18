@@ -35,12 +35,11 @@
 
 .glass-card {
   @extend .glass-elevated;
-  transition: transform $duration-normal $ease-spring,
-              box-shadow $duration-normal $ease-smooth,
-              background $duration-normal $ease-smooth,
-              border-color $duration-normal $ease-smooth;
+  transition: transform $duration-normal $ease-out,
+              box-shadow $duration-normal $ease-out,
+              background $duration-normal $ease-out,
+              border-color $duration-normal $ease-out;
 
-  &:hover,
   &:focus-within {
     transform: translateY(-6px) scale(1.015);
     background: var(--color-card-hover-bg);
@@ -51,6 +50,20 @@
       0 0 72px 24px var(--color-glow-cyan-hover),
       0 24px 56px var(--color-shadow-strong),
       inset 0 1px 0 rgba(255,255,255,0.32);
+  }
+
+  @media (hover: hover) and (pointer: fine) {
+    &:hover {
+      transform: translateY(-6px) scale(1.015);
+      background: var(--color-card-hover-bg);
+      border-color: var(--color-border-strong);
+      box-shadow:
+        0 0 0 2px var(--color-border-strong),
+        0 0 32px 12px var(--color-glow-hover),
+        0 0 72px 24px var(--color-glow-cyan-hover),
+        0 24px 56px var(--color-shadow-strong),
+        inset 0 1px 0 rgba(255,255,255,0.32);
+    }
   }
 
   &:has(:active) {
@@ -82,13 +95,22 @@
     border: 2px solid var(--color-text-secondary);
     background: var(--color-surface-3);
 
-    &:hover,
     &:focus-within {
       border-color: var(--color-accent-primary);
       box-shadow:
         0 0 0 3px var(--color-accent-primary),
         0 8px 24px var(--color-shadow-strong);
       transform: translateY(-6px) scale(1.015);
+    }
+
+    @media (hover: hover) and (pointer: fine) {
+      &:hover {
+        border-color: var(--color-accent-primary);
+        box-shadow:
+          0 0 0 3px var(--color-accent-primary),
+          0 8px 24px var(--color-shadow-strong);
+        transform: translateY(-6px) scale(1.015);
+      }
     }
   }
 }
