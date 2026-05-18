@@ -84,12 +84,14 @@
     white-space: nowrap;
     flex-shrink: 0;
     scroll-snap-align: start;
-    transition: color $duration-fast $ease-smooth,
-                background $duration-fast $ease-smooth;
+    transition: color $duration-fast $ease-out,
+                background $duration-fast $ease-out;
 
-    &:hover {
-      color: var(--color-text-primary);
-      background: var(--color-hover);
+    @media (hover: hover) and (pointer: fine) {
+      &:hover {
+        color: var(--color-text-primary);
+        background: var(--color-hover);
+      }
     }
 
     &--active {
@@ -195,10 +197,13 @@
     border-bottom: 1px solid var(--color-border);
     font-size: 14px;
     color: var(--color-text-secondary);
-    transition: color $duration-fast $ease-smooth;
+    transition: color $duration-fast $ease-out;
 
     &:last-child { border-bottom: none; }
-    &:hover { color: var(--color-text-primary); }
+
+    @media (hover: hover) and (pointer: fine) {
+      &:hover { color: var(--color-text-primary); }
+    }
 
     svg { color: var(--color-accent-secondary); flex-shrink: 0; }
   }

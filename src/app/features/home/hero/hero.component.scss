@@ -27,6 +27,7 @@
     position: absolute;
     border-radius: 50%;
     filter: blur(80px);
+    will-change: filter;
 
     &--violet {
       width: 70%;
@@ -193,9 +194,9 @@
     box-shadow: 0 4px 16px var(--color-shadow);
     white-space: nowrap;
 
-    &--1 { top: 20%; right: -16px; animation: float 6s ease-in-out infinite; }
-    &--2 { top: 55%; left: -24px; animation: float 7s ease-in-out infinite 1s; }
-    &--3 { bottom: 18%; right: -8px; animation: float 5.5s ease-in-out infinite 0.5s; }
+    &--1 { top: 20%; right: -16px; animation: float 6s ease-in-out infinite; will-change: transform; }
+    &--2 { top: 55%; left: -24px; animation: float 7s ease-in-out infinite 1s; will-change: transform; }
+    &--3 { bottom: 18%; right: -8px; animation: float 5.5s ease-in-out infinite 0.5s; will-change: transform; }
   }
 
   &__scroll {

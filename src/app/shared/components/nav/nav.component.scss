@@ -38,9 +38,11 @@
     display: flex;
     align-items: center;
     opacity: 1;
-    transition: opacity $duration-normal $ease-smooth;
+    transition: opacity $duration-normal $ease-out;
 
-    &:hover { opacity: 0.80; }
+    @media (hover: hover) and (pointer: fine) {
+      &:hover { opacity: 0.80; }
+    }
   }
 
   &__logo {
@@ -72,13 +74,14 @@
     color: var(--color-text-secondary);
     text-decoration: none;
     border-radius: $radius-full;
-    transition: color $duration-fast $ease-smooth,
-                background $duration-fast $ease-smooth;
+    transition: color $duration-fast $ease-out,
+                background $duration-fast $ease-out;
 
-    &:hover {
-      color: var(--color-text-primary);
-      background: var(--color-hover);
-      opacity: 1;
+    @media (hover: hover) and (pointer: fine) {
+      &:hover {
+        color: var(--color-text-primary);
+        background: var(--color-hover);
+      }
     }
 
     &:focus-visible {
@@ -109,14 +112,16 @@
     background: transparent;
     color: var(--color-text-secondary);
     cursor: pointer;
-    transition: color $duration-fast $ease-smooth,
-                background $duration-fast $ease-smooth,
-                border-color $duration-fast $ease-smooth;
+    transition: color $duration-fast $ease-out,
+                background $duration-fast $ease-out,
+                border-color $duration-fast $ease-out;
 
-    &:hover {
-      color: var(--color-accent-primary);
-      background: var(--color-hover);
-      border-color: var(--color-border-strong);
+    @media (hover: hover) and (pointer: fine) {
+      &:hover {
+        color: var(--color-accent-primary);
+        background: var(--color-hover);
+        border-color: var(--color-border-strong);
+      }
     }
 
     &:focus-visible {
@@ -165,11 +170,13 @@
                   background $duration-fast $ease-smooth;
     }
 
-    &:hover {
-      border-color: var(--color-border-strong);
-      background: var(--color-hover);
+    @media (hover: hover) and (pointer: fine) {
+      &:hover {
+        border-color: var(--color-border-strong);
+        background: var(--color-hover);
 
-      span { background: var(--color-accent-primary); }
+        span { background: var(--color-accent-primary); }
+      }
     }
 
     &--open {
