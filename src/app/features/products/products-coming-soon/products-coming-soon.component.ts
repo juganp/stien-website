@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import { RouterLink } from '@angular/router';
+import { Component, inject } from '@angular/core';
+import { Router, RouterLink } from '@angular/router';
 
 interface CategoryPreview {
   name: string;
@@ -15,6 +15,8 @@ interface CategoryPreview {
   styleUrl: './products-coming-soon.component.scss'
 })
 export class ProductsComingSoonComponent {
+  private router = inject(Router);
+
   categories: CategoryPreview[] = [
     { name: 'Volumetric', count: 2, icon: 'M12 2L12 6M12 6C8 6 6 10 6 14C6 18 8 22 12 22C16 22 18 18 18 14C18 10 16 6 12 6Z' },
     { name: 'Analytical', count: 1, icon: 'M8 2V6M8 6H4V22H20V6H16M8 6H16M16 2V6M10 12H14M12 10V14' },
@@ -23,8 +25,7 @@ export class ProductsComingSoonComponent {
     { name: 'Specialty', count: 2, icon: 'M12 2C8 2 4 6 4 12L4 22H20L20 12C20 6 16 2 12 2ZM8 14H16M10 18H14' },
   ];
 
-  scrollToContact(event: Event): void {
-    event.preventDefault();
-    window.location.href = '/#contact';
+  goToSection(fragment: string): void {
+    this.router.navigate(['/'], { fragment });
   }
 }
