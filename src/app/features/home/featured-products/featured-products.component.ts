@@ -1,4 +1,5 @@
 import { Component, OnInit, AfterViewInit, ElementRef, ViewChild, inject } from '@angular/core';
+import { RouterLink } from '@angular/router';
 import { ProductsService } from '../../../core/services/products.service';
 import { Product } from '../../../core/models/product.model';
 import { ProductCardComponent } from '../../../shared/components/product-card/product-card.component';
@@ -6,7 +7,7 @@ import { ProductCardComponent } from '../../../shared/components/product-card/pr
 @Component({
   selector: 'app-featured-products',
   standalone: true,
-  imports: [ProductCardComponent],
+  imports: [ProductCardComponent, RouterLink],
   templateUrl: './featured-products.component.html',
   styleUrl: './featured-products.component.scss'
 })

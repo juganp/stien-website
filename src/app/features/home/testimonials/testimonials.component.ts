@@ -2,6 +2,9 @@ import { Component, AfterViewInit, ElementRef, ViewChild } from '@angular/core';
 
 // TODO: Replace placeholder data with real customer testimonials and confirmed institution names
 
+// Set to true when real testimonials are ready to publish
+export const SHOW_TESTIMONIALS = false;
+
 interface Testimonial {
   id: string;
   quote: string;
@@ -24,6 +27,8 @@ interface Institution {
   styleUrl: './testimonials.component.scss'
 })
 export class TestimonialsComponent implements AfterViewInit {
+  readonly showTestimonials = SHOW_TESTIMONIALS;
+
   @ViewChild('testimonialsGrid') private gridRef!: ElementRef<HTMLElement>;
   @ViewChild('institutionsStrip') private stripRef!: ElementRef<HTMLElement>;
 
@@ -71,6 +76,7 @@ export class TestimonialsComponent implements AfterViewInit {
   ];
 
   ngAfterViewInit(): void {
+    if (!this.gridRef) return;
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {

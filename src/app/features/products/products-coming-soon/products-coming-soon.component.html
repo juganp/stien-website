@@ -1,0 +1,127 @@
+<div class="cs">
+  <!-- Layered backdrop -->
+  <div class="cs__backdrop" aria-hidden="true">
+    <div class="cs__orb cs__orb--lavender"></div>
+    <div class="cs__orb cs__orb--cyan"></div>
+    <div class="cs__orb cs__orb--violet"></div>
+  </div>
+
+  <!-- Floating bubbles -->
+  <div class="cs__bubbles" aria-hidden="true">
+    @for (i of [1,2,3,4,5,6,7,8]; track i) {
+      <div class="cs__bubble" [style.--i]="i"></div>
+    }
+  </div>
+
+  <!-- Grain overlay -->
+  <div class="cs__grain" aria-hidden="true"></div>
+
+  <div class="cs__container section-container">
+
+    <!-- Back button -->
+    <a routerLink="/" class="cs__back">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <line x1="19" y1="12" x2="5" y2="12"/>
+        <polyline points="12 19 5 12 12 5"/>
+      </svg>
+      Back to Home
+    </a>
+
+    <!-- Hero content -->
+    <div class="cs__hero">
+      <!-- Animated flask illustration -->
+      <div class="cs__flask-wrap" aria-hidden="true">
+        <svg class="cs__flask" viewBox="0 0 200 280" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <!-- Flask neck -->
+          <rect x="82" y="10" width="36" height="80" rx="4" stroke="currentColor" stroke-width="2" opacity="0.6"/>
+          <!-- Flask body -->
+          <path d="M82 90 L42 200 C38 212 46 228 60 232 L140 232 C154 228 162 212 158 200 L118 90"
+                stroke="currentColor" stroke-width="2" opacity="0.6"/>
+          <!-- Liquid fill with animation -->
+          <path class="cs__liquid" d="M52 200 L82 120 L118 120 L148 200 C152 210 146 224 134 226 L66 226 C54 224 48 210 52 200Z"
+                fill="url(#liquidGrad)" opacity="0.3"/>
+          <!-- Bubbles inside flask -->
+          <circle class="cs__flask-bubble cs__flask-bubble--1" cx="90" cy="190" r="4" fill="currentColor" opacity="0.3"/>
+          <circle class="cs__flask-bubble cs__flask-bubble--2" cx="110" cy="180" r="3" fill="currentColor" opacity="0.25"/>
+          <circle class="cs__flask-bubble cs__flask-bubble--3" cx="100" cy="170" r="5" fill="currentColor" opacity="0.2"/>
+          <!-- Graduation marks -->
+          <line x1="56" y1="210" x2="72" y2="210" stroke="currentColor" stroke-width="1" opacity="0.3"/>
+          <line x1="50" y1="200" x2="72" y2="200" stroke="currentColor" stroke-width="1" opacity="0.3"/>
+          <line x1="60" y1="190" x2="76" y2="190" stroke="currentColor" stroke-width="1" opacity="0.3"/>
+          <!-- Rim highlight -->
+          <rect x="78" y="8" width="44" height="4" rx="2" stroke="currentColor" stroke-width="1.5" opacity="0.4"/>
+          <defs>
+            <linearGradient id="liquidGrad" x1="100" y1="120" x2="100" y2="226" gradientUnits="userSpaceOnUse">
+              <stop offset="0%" stop-color="var(--color-accent-primary)" stop-opacity="0.6"/>
+              <stop offset="100%" stop-color="var(--color-accent-secondary)" stop-opacity="0.8"/>
+            </linearGradient>
+          </defs>
+        </svg>
+      </div>
+
+      <div class="cs__hero-text">
+        <div class="section-badge">
+          <svg width="8" height="8" viewBox="0 0 8 8" aria-hidden="true"><circle cx="4" cy="4" r="4" fill="currentColor"/></svg>
+          Product Catalog
+        </div>
+
+        <div class="arc-divider"></div>
+
+        <h1 class="cs__title text-h1">
+          Catalog Under<br>
+          <em class="cs__title-em">Calibration</em>
+        </h1>
+
+        <p class="cs__subtitle text-body-lg">
+          Our comprehensive apparatus catalog spanning volumetric, analytical,
+          distillation, and specialty glassware is being meticulously assembled.
+          Every product specification verified to international standards before publication.
+        </p>
+
+        <div class="cs__actions">
+          <a routerLink="/" fragment="contact" class="btn-primary">
+            Request a Quote
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <line x1="5" y1="12" x2="19" y2="12"/>
+              <polyline points="12 5 19 12 12 19"/>
+            </svg>
+          </a>
+          <a routerLink="/" class="btn-secondary">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <line x1="19" y1="12" x2="5" y2="12"/>
+              <polyline points="12 19 5 12 12 5"/>
+            </svg>
+            Back to Home
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Category preview -->
+    <div class="cs__categories">
+      <h2 class="cs__cat-heading text-h4">Categories in Preparation</h2>
+      <div class="cs__cat-grid">
+        @for (cat of categories; track cat.name) {
+          <div class="cs__cat-card glass-elevated">
+            <div class="cs__cat-icon">
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path [attr.d]="cat.icon"/>
+              </svg>
+            </div>
+            <span class="cs__cat-name">{{ cat.name }}</span>
+            <span class="cs__cat-count text-spec">{{ cat.count }}+ items</span>
+          </div>
+        }
+      </div>
+    </div>
+
+    <!-- Status strip -->
+    <div class="cs__status glass">
+      <div class="cs__status-dot" aria-hidden="true"></div>
+      <span class="cs__status-text text-spec">Catalog data pipeline under active development</span>
+      <span class="cs__status-divider" aria-hidden="true"></span>
+      <span class="cs__status-text text-body-sm">Meanwhile, reach out for product specifications and pricing</span>
+    </div>
+
+  </div>
+</div>

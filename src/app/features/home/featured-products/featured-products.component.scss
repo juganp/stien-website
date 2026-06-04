@@ -95,6 +95,17 @@
     }
   }
 
+  &__cta-wrap {
+    display: flex;
+    justify-content: center;
+    margin-top: 48px;
+  }
+
+  &__cta {
+    font-size: 16px;
+    padding: 14px 36px;
+  }
+
   &__standards {
     margin-top: 64px;
     display: flex;
