@@ -1,11 +1,12 @@
 import { Component, HostListener, inject, signal } from '@angular/core';
 import { AsyncPipe } from '@angular/common';
+import { RouterLink } from '@angular/router';
 import { ThemeService } from '../../../core/services/theme.service';
 
 @Component({
   selector: 'app-nav',
   standalone: true,
-  imports: [AsyncPipe],
+  imports: [AsyncPipe, RouterLink],
   templateUrl: './nav.component.html',
   styleUrl: './nav.component.scss'
 })
