@@ -1,6 +1,6 @@
 import { Component, HostListener, inject, signal } from '@angular/core';
 import { AsyncPipe } from '@angular/common';
-import { RouterLink } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { ThemeService } from '../../../core/services/theme.service';
 
 @Component({
@@ -12,6 +12,7 @@ import { ThemeService } from '../../../core/services/theme.service';
 })
 export class NavComponent {
   private themeService = inject(ThemeService);
+  private router = inject(Router);
 
   scrolled = signal(false);
   menuOpen = signal(false);
@@ -38,6 +39,9 @@ export class NavComponent {
       const navH = 72;
       const top = el.getBoundingClientRect().top + window.scrollY - navH;
       window.scrollTo({ top, behavior: 'smooth' });
+    } else {
+      // Navigate to home with fragment — anchorScrolling will handle the scroll
+      this.router.navigate(['/'], { fragment: id });
     }
   }
 }
