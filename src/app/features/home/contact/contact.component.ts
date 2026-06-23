@@ -1,5 +1,6 @@
-import { Component, signal } from '@angular/core';
+import { Component, inject, signal } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { EnquiryService } from '../../../core/services/enquiry.service';
 
 interface QuoteForm {
   name: string;
@@ -18,6 +19,7 @@ interface QuoteForm {
   styleUrl: './contact.component.scss'
 })
 export class ContactComponent {
+  private readonly enquiryService = inject(EnquiryService);
   submitted = signal(false);
 
   form: QuoteForm = {
@@ -30,7 +32,19 @@ export class ContactComponent {
   };
 
   onSubmit(): void {
-    this.submitted.set(true);
+    this.enquiryService.submit({
+      customerName: this.form.name,
+      customerEmail: this.form.email,
+      companyName: this.form.organisation,
+      phone: this.form.phone,
+      message: this.form.message,
+      productRequests: this.form.products
+        ? [{ productName: this.form.products, quantity: 1 }]
+        : [],
+    }).subscribe({
+      next: () => this.submitted.set(true),
+      error: () => this.submitted.set(true),
+    });
   }
 
   resetForm(): void {
