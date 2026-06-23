@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  vilaiflowApiUrl: 'https://api.stienglassware.com',
+  vilaiflowApiUrl: 'https://app.stienglassware.com',
 };

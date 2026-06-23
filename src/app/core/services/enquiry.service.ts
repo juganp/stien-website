@@ -27,7 +27,6 @@ export class EnquiryService {
   private readonly apiUrl = `${environment.vilaiflowApiUrl}/api/public/enquiries`;
 
   submit(payload: SubmitEnquiryPayload): Observable<EnquiryResponse> {
-    alert('JP')
     return this.http.post<EnquiryResponse>(this.apiUrl, payload);
   }
 }
