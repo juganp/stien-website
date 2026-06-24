@@ -69,7 +69,9 @@
           <h3 class="contact__form-title">B2B Quote Request</h3>
 
           <div class="contact__fields">
-            <div class="contact__field">
+
+            <!-- Full Name -->
+            <div class="contact__field" [class.contact__field--error]="nameField.invalid && nameField.touched">
               <label for="cf-name" class="contact__label">Full Name <span aria-hidden="true">*</span></label>
               <input
                 id="cf-name"
@@ -77,13 +79,22 @@
                 class="contact__input"
                 [(ngModel)]="form.name"
                 name="name"
+                #nameField="ngModel"
                 required
+                minlength="2"
                 autocomplete="name"
                 placeholder="Dr. Priya Rajan"
               />
+              @if (nameField.touched && nameField.errors) {
+                <span class="contact__error" role="alert">
+                  @if (nameField.errors['required']) { Full name is required. }
+                  @else if (nameField.errors['minlength']) { Name must be at least 2 characters. }
+                </span>
+              }
             </div>
 
-            <div class="contact__field">
+            <!-- Organisation -->
+            <div class="contact__field" [class.contact__field--error]="orgField.invalid && orgField.touched">
               <label for="cf-org" class="contact__label">Organisation <span aria-hidden="true">*</span></label>
               <input
                 id="cf-org"
@@ -91,13 +102,18 @@
                 class="contact__input"
                 [(ngModel)]="form.organisation"
                 name="organisation"
+                #orgField="ngModel"
                 required
                 autocomplete="organization"
                 placeholder="Government College of Arts and Science"
               />
+              @if (orgField.touched && orgField.errors?.['required']) {
+                <span class="contact__error" role="alert">Organisation name is required.</span>
+              }
             </div>
 
-            <div class="contact__field">
+            <!-- Email -->
+            <div class="contact__field" [class.contact__field--error]="emailField.invalid && emailField.touched">
               <label for="cf-email" class="contact__label">Email Address <span aria-hidden="true">*</span></label>
               <input
                 id="cf-email"
@@ -105,13 +121,22 @@
                 class="contact__input"
                 [(ngModel)]="form.email"
                 name="email"
+                #emailField="ngModel"
                 required
+                [pattern]="emailPattern"
                 autocomplete="email"
                 placeholder="priya&#64;example.edu"
               />
+              @if (emailField.touched && emailField.errors) {
+                <span class="contact__error" role="alert">
+                  @if (emailField.errors['required']) { Email address is required. }
+                  @else if (emailField.errors['pattern']) { Please enter a valid email address. }
+                </span>
+              }
             </div>
 
-            <div class="contact__field">
+            <!-- Phone (optional) -->
+            <div class="contact__field" [class.contact__field--error]="phoneField.invalid && phoneField.touched">
               <label for="cf-phone" class="contact__label">Phone</label>
               <input
                 id="cf-phone"
@@ -119,12 +144,18 @@
                 class="contact__input"
                 [(ngModel)]="form.phone"
                 name="phone"
+                #phoneField="ngModel"
+                [pattern]="phonePattern"
                 autocomplete="tel"
                 placeholder="+91 98000 00000"
               />
+              @if (phoneField.touched && phoneField.errors?.['pattern']) {
+                <span class="contact__error" role="alert">Please enter a valid phone number.</span>
+              }
             </div>
 
-            <div class="contact__field contact__field--full">
+            <!-- Products -->
+            <div class="contact__field contact__field--full" [class.contact__field--error]="productsField.invalid && productsField.touched">
               <label for="cf-products" class="contact__label">Products of Interest <span aria-hidden="true">*</span></label>
               <input
                 id="cf-products"
@@ -132,11 +163,16 @@
                 class="contact__input"
                 [(ngModel)]="form.products"
                 name="products"
+                #productsField="ngModel"
                 required
                 placeholder="e.g. Volumetric Flask 250 mL, Burette 50 mL"
               />
+              @if (productsField.touched && productsField.errors?.['required']) {
+                <span class="contact__error" role="alert">Please specify at least one product of interest.</span>
+              }
             </div>
 
+            <!-- Message -->
             <div class="contact__field contact__field--full">
               <label for="cf-msg" class="contact__label">Message</label>
               <textarea
@@ -150,13 +186,26 @@
             </div>
           </div>
 
+          <!-- API error banner -->
+          @if (submitError()) {
+            <div class="contact__api-error" role="alert" aria-live="assertive">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+              {{ submitError() }}
+            </div>
+          }
+
           <button
             type="submit"
             class="btn-primary contact__submit"
-            [disabled]="!quoteForm.valid"
+            [disabled]="!quoteForm.valid || submitting()"
           >
-            Submit Enquiry
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+            @if (submitting()) {
+              <span class="contact__spinner" aria-hidden="true"></span>
+              Submitting…
+            } @else {
+              Submit Enquiry
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+            }
           </button>
         </form>
       } @else {
