@@ -1,5 +1,6 @@
 import { Component, inject, signal } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { HttpErrorResponse } from '@angular/common/http';
 import { EnquiryService } from '../../../core/services/enquiry.service';
 
 interface QuoteForm {
@@ -20,7 +21,13 @@ interface QuoteForm {
 })
 export class ContactComponent {
   private readonly enquiryService = inject(EnquiryService);
+
   submitted = signal(false);
+  submitting = signal(false);
+  submitError = signal<string | null>(null);
+
+  readonly emailPattern = /^[a-zA-Z0-9._%+\-]+@[a-zA-Z0-9.\-]+\.[a-zA-Z]{2,}$/;
+  readonly phonePattern = /^[+]?[\d\s\-().]{7,20}$/;
 
   form: QuoteForm = {
     name: '',
@@ -32,6 +39,9 @@ export class ContactComponent {
   };
 
   onSubmit(): void {
+    this.submitError.set(null);
+    this.submitting.set(true);
+
     this.enquiryService.submit({
       customerName: this.form.name,
       customerEmail: this.form.email,
@@ -42,13 +52,27 @@ export class ContactComponent {
         ? [{ productName: this.form.products, quantity: 1 }]
         : [],
     }).subscribe({
-      next: () => this.submitted.set(true),
-      error: () => this.submitted.set(true),
+      next: () => {
+        this.submitting.set(false);
+        this.submitted.set(true);
+      },
+      error: (err: HttpErrorResponse) => {
+        this.submitting.set(false);
+        if (err.status === 400) {
+          const apiMessage: string | undefined = err.error?.message ?? err.error?.error;
+          this.submitError.set(apiMessage ?? 'One or more fields are invalid. Please review your details and try again.');
+        } else if (err.status === 0) {
+          this.submitError.set('Unable to reach the server. Please check your connection and try again.');
+        } else {
+          this.submitError.set('Something went wrong on our end. Please try again shortly or contact us directly.');
+        }
+      },
     });
   }
 
   resetForm(): void {
     this.form = { name: '', organisation: '', email: '', phone: '', products: '', message: '' };
     this.submitted.set(false);
+    this.submitError.set(null);
   }
 }
